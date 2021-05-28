@@ -1,4 +1,4 @@
 <?php
-// déconnecter l'utilisateur puis rediriger vers accueil
-
+// déconnecter l'utilisateur
+header("Location: index.php"); // redirige vers la page d'accueil
 ?>

@@ -1,14 +1,17 @@
 <?php
-echo '<!doctype html>
-
-<html lang="en">
+echo '<!DOCTYPE html>
+<html lang="fr">
 <head>
-  <meta charset="utf-8">
-
-  <title>The HTML5 Herald</title>
-  <meta name="description" content="Rechercher - 2IQuizz">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rechercher - 2IQuizz</title>
+  <meta name="description" content="Page de recherche de quizz du site 2IQuizz">
 </head>
 <body>';
 include 'header.php';
-
+echo '<style>
+.rechercher-a {
+    text-decoration:underline;
+</style>';
 ?>
