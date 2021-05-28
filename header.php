@@ -1,59 +1,67 @@
 <?php
 $user_connected = True;
 
-echo '
-  <div class="header">
-    <div class="wrapper-header__left">
-      <a href="">Acceuil</a>
-      <a href="">Rechercher</a>
-      <a href="">Mes Quizz</a>
-    </div>
-    <div class="wrapper-header__right">
-      <a href="">Icons</a>
-      <a href="">Mon Profil</a>
-      <a href="">Deconnexion</a>
-    </div>
-  </div>
-<style>
-  body {
+echo '<style>
+body {
   padding: 0;
   margin: 0;
 }
-
 .header {
-  width: 100%;
-  position: fixed;
-  background: rgb(104, 16, 65);
-  display: flex;
-  justify-content: space-between;
-  padding: 24px 0;
-  font-size: 20px;
+    background-color: #7280ff;
+    display: flow-root;
 }
-
-.wrapper-header__left,
-.wrapper-header__right {
-  display: flex;
-  align-self: flex-start;
-
-flex-wrap: wrap;
+.accueil-div, .rechercher-div {
+    float: left;
+    margin-left: 5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
-
-.wrapper-header__left a,
-.wrapper-header__right a {
-  flex: 1 1 0;
-  color: white;
-  font-weight: 900;
-  min-width: 150px;
-  padding: 0 20px;
+.accueil-a, .rechercher-a {
+    color: white;
+    text-decoration: none;
 }
+</style>
+<div class="header"><div class="accueil-div"><a class="accueil-a" href="./index.php">Accueil</a></div>
+<div class="rechercher-div"><a class="rechercher-a" href="./rechercher.php">Rechercher</a></div>
+';
 
-.wrapper-header__left {
-  width: 60%;
+if ($user_connected) {
+    echo '<style>
+.profil-div, .deconnexion-div {
+    float: right;
+    margin-right: 5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
-
-.wrapper-header__right {
-  width: 30%;
+.mes_quizz-div {
+    float: left;
+    margin-left: 5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
-</style>';
+.mes_quizz-a, .profil-a, .deconnexion-a {
+    color: white;
+    text-decoration:none;
+}
+</style>
+<div class="mes_quizz-div"><a class="mes_quizz-a" href="./mes_quizz.php">Mes Quizz</a></div>
+<div class="deconnexion-div"><a class="deconnexion-a" href="./deconnexion.php">Déconnexion</a></div>
+<div class="profil-div"><a class="profil-a" href="./profil.php">Mon Profil</a></div>
+</div>';
+} else {
+    echo '<style>
+.connexion-div, .inscription-div {
+    float: right;
+    margin-right: 5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.connexion-a, .inscription-a {
+    color: white;
+    text-decoration:none;
+}
+</style>
+<div class="connexion-div"><a class="connexion-a" href="./connexion.php">Connexion</a></div>
+<div class="inscription-div"><a class="inscription-a" href="./inscription.php">Inscription</a></div></header>';
+}
 ?>
-
