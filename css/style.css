@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Komika Display";
+    src: url("/ressources/komika-display.regular.ttf") format("ttf");
+}
+
 body {
     font-family: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Lucida Console", monospace;
     padding: 0;
@@ -7,12 +12,12 @@ body {
     background-color: #3b4866;
     color: white;
   }
-  .header {
+.header {
       font-size: 120%;
       background-color: #7280ff;
       display: flow-root;
   }
-  .accueil-div, .rechercher-div {
+.accueil-div, .rechercher-div {
       float: left;
       margin-left: 5%;
       margin-top: 0.5%;
@@ -81,11 +86,13 @@ body {
 
 .right-box {
     background-color: black;
+    width: 100%;
 }
 
-.accueil-p {
+.rtitle-p {
     color: white;
     font-size: 300%;
+    text-align: center;
 }
 
 .title {
@@ -94,13 +101,15 @@ body {
     text-shadow: 10px 10px 5px black;
     color: darkcyan;
     -webkit-text-stroke: 2px black;
-    margin: 0
+    margin: 0;
+    text-align: center;
 }
 
-.principle-header-div {
-    display: flex;
-    font-size: 200%;
-}
 .principle-header-p {
     margin: 0;
+    font-size: 200%;
+    text-align: center;
+}
+.principle-p {
+    text-align: center;
 }
