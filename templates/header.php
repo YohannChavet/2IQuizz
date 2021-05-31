@@ -17,7 +17,7 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\" ?>";
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>2iQuizz</title>
   <link rel="icon" type="image/png" href="ressources/2i.png" />
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
 <!-- **** F I N **** H E A D **** -->
