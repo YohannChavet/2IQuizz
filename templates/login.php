@@ -13,15 +13,20 @@ $passe = valider("passe", "COOKIE");
 if ($checked = valider("remember", "COOKIE")) $checked = "checked"; 
 
 ?>
+<head>	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 
+</head>
+<body>
 <div id="corps">
 
 <h1>Connexion</h1>
 
-<div id="formLogin">
+<div class="Form">
 <form action="controleur.php" method="GET">
-<label for="login"> Login : </label><input type="text" id="login" name="login" value="<?php echo $login;?>" /><br />
-<label for="passe">Passe : </label><input type="password" id="passe" name="passe" value="<?php echo $passe;?>" /><br />
+<label for="login"> Nom d'utilisateur : </label><input type="text" id="login" name="login" value="<?php echo $login;?>" /><br />
+<label for="passe">Mot de passe : </label><input type="password" id="passe" name="passe" value="<?php echo $passe;?>" /><br />
 <label for="remember">Se souvenir de moi </label><input type="checkbox" <?php echo $checked;?> name="remember" id="remember" value="ok"/> <br />
 
 <input type="submit" name="action" value="Connexion" />

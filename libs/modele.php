@@ -82,6 +82,15 @@ function connecterUtilisateur($idUser)
 	");
 }
 
+function CréerUtilisateur($userame,$pseudo,$mdp)
+{
+
+	return SQLInsert("
+	  INSERT INTO utilisateurs (Pseudo,username,mdp)
+	  VALUES ('$pseudo','$userame','$mdp');"
+);
+}
+
 function deconnecterUtilisateur($idUser)
 {
 

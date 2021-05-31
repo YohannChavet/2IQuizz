@@ -10,7 +10,7 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php")
 echo "<?xml version=\"1.0\" encoding=\"utf-8\" ?>";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <!-- **** H E A D **** -->
 <head>	
@@ -39,12 +39,12 @@ echo "
 if (!valider("connecte", "SESSION")) {
   echo "
   <div class=\"connexion-div\"><a class=\"connexion-a\" href=\"index.php?view=login\">Connexion</a></div>
-  <div class=\"inscription-div\"><a class=\"inscription-a\" href=\"index.php?view=inscription\">Inscription</a></div>";
+  <div class=\"inscription-div\"><a class=\"inscription-a\" href=\"index.php?view=inscription\">Inscription</a></div></header>";
 }
 else{
 echo"
-  <div class=\"mes_quizz-div\"><a class=\"mes_quizz-a\" href=\"index.php?view=mes_quizz\">Mes Quizz</a></div>
-  <div class=\"deconnexion-div\"><a class=\"deconnexion-a\" href=\"index.php?view=deconnexion\">Déconnexion</a></div>
+  <div class=\"deconnexion-div\"><a class=\"mes_quizz-a\" href=\"controleur.php?action=Logout\">Déconnexion</a></div>
+  <div class=\"mes_quizz-div\"><a class=\"deconnexion-a\" href=\"index.php?view=mes_quizz\">Mes Quizz</a></div>
   <div class=\"profil-div\"><a class=\"profil-a\" href=\"index.php?view=profil\">Mon Profil</a></div>";
 }
 

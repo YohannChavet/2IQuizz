@@ -1,3 +1,18 @@
+<?php
+
+// Si la page est appelée directement par son adresse, on redirige en passant pas la page index
+if (basename($_SERVER["PHP_SELF"]) != "index.php")
+{
+	header("Location:../index.php?view=login");
+	die("");
+}
+?>
+<head>	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+<body>
 <div class="flex">
     <div class="left">
         <div class="title">
@@ -29,3 +44,4 @@
         <div class="right-box"><p class="accueil-p">Accueil</p></div>
     </div>
 </div>
+</body>
