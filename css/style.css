@@ -10,7 +10,6 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #3b4866;
-    color: white;
   }
 .header {
       font-size: 120%;
@@ -74,6 +73,7 @@ body {
 
 .left {
     width: 70%;
+    color: white;
 }
 
 .right {
