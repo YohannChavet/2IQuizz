@@ -82,7 +82,56 @@ body {
     display: flex;
     flex-direction: row;
     /*overflow:hidden;*/
+    -webkit-animation: right 5s cubic-bezier(0.175, 0.885, 0.320, 1.275) infinite alternate both;
+    animation: right 5s cubic-bezier(0.175, 0.885, 0.320, 1.275) infinite alternate both;
 }
+/**
+ * ----------------------------------------
+ * animation scale-up-horizontal-right
+ * ----------------------------------------
+ */
+@-webkit-keyframes right {
+    0% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+    80% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+    100% {
+        -webkit-transform: scaleX(1.1);
+        transform: scaleX(1.1);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+}
+@keyframes right {
+    0% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+    80% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+    100% {
+        -webkit-transform: scaleX(1.1);
+        transform: scaleX(1.1);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+}
+
+
 
 .right-box {
     background-color: black;
