@@ -71,7 +71,72 @@ session_start();
       CréerQuizz($NomQUizz,$Catégorie2,$T2Quizz,$_SESSION["idUser"]);
       $qs = "view=mes_quizz";
       break;
+
+
+
+
+
+
+
+      case 'Créer une question':
+      if($type=valider("type"));
+      if($Question=valider("Question"));
+      if($NQues=valider("NQues"));
+      $IDQuizz=$_GET['IDQuizz'];
+
+      if($type==='VraiFaux'){
+        if($VraiFaux=valider("VraiFaux"));
+        ajouterquestionVF($IDQuizz,$NQues,$Question,$VraiFaux);
+      }
+      else{
+        if($Reponse=valider("Reponse"));
+        if($CHOIX1=valider("CHOIX1"));
+        if($CHOIX2=valider("CHOIX2"));
+        if($CHOIX3=valider("CHOIX3"));
+        ajouterquestionQCM($IDQuizz,$NQues,$Question,$Reponse,$CHOIX1,$CHOIX2,$CHOIX3);
+      }
+      $qs = "view=quizz&IDQuizz=$IDQuizz";
+      break;
+
+
+
+
+
+      case 'Modifier une question' :
+        if($type=valider("type"));
+        if($Question=valider("Question"));
+        if($NQues=valider("NQues"));
+        $IDQuizz=$_GET['IDQuizz'];
+  
+        if($type==='VraiFaux'){
+          if($VraiFaux=valider("VraiFaux"));
+          modifierquestionVF($IDQuizz,$NQues,$Question,$VraiFaux);
+        }
+        else{
+          if($Reponse=valider("Reponse"));
+          if($CHOIX1=valider("CHOIX1"));
+          if($CHOIX2=valider("CHOIX2"));
+          if($CHOIX3=valider("CHOIX3"));
+          modifierquestionQCM($IDQuizz,$NQues,$Question,$Reponse,$CHOIX1,$CHOIX2,$CHOIX3);
+        }
+        $qs = "view=quizz&IDQuizz=$IDQuizz";
+        break;
+
+        case 'Supprimer la question' :
+          if($type=valider("type"));
+          if($NQues=valider("NQues"));
+          $IDQuizz=$_GET['IDQuizz'];
+    
+          if($type==='VraiFaux'){
+            SupprimerVF($IDQuizz,$NQues);
+          }
+          else{
+            SupprimerQCM($IDQuizz,$NQues);
+          }
+          $qs = "view=quizz&IDQuizz=$IDQuizz";
+          break;
     }
+    
   }
 
 

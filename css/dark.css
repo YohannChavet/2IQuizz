@@ -2,7 +2,9 @@
     font-family: "Komika Display";
     src: url("/ressources/komika-display.regular.ttf") format("ttf");
 }
-
+/* red : #f99 #9f3f3f red darkred
+   light : white black
+ */
 body {
     font-family: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Lucida Console", monospace;
     padding: 0;
@@ -34,7 +36,7 @@ body {
 
 .header-theme {
     display: inline-block;
-    margin: 0.5% 0 0.6% 1%;
+    margin: 0.5% 1% 0.6% 1%;
     font-weight: normal;
     font-size: 100%;
     float: left;
@@ -267,8 +269,27 @@ svg {
     float: left;
     vertical-align: middle;
     padding-left: 0.5%;
+    position: relative;
+    z-index: -1;
 }
-.svg-dark-a, .svg-light-a {
+.day {
+    fill: white
+}
+.night {
+    fill: black;
+}
+.red {
+    fill: red;
+}
+
+.svg-dark-a, .svg-light-a, .svg-red-a {
     display: inline-block;
+    position: relative;
+    z-index: 1;
     float: left;
+}
+
+.span-theme {
+    display: inline-block;
+    height: 100%;
 }

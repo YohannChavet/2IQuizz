@@ -9,12 +9,12 @@ body {
     margin: 0;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: #9f3f3f;
 }
 
 .header {
     font-size: 120%;
-    background-color: #7a89ff;
+    background-color: darkred;
     display: flow-root;
 }
 
@@ -42,7 +42,7 @@ body {
 }
 
 .header-theme, .mes_quizz-a, .profil-a, .deconnexion-a, .connexion-a, .inscription-a, .accueil-a, .rechercher-a {
-    color: white;
+    color: red;
     text-decoration: none;
 }
 
@@ -89,7 +89,7 @@ body {
 
 .left {
     width: 70%;
-    color: black;
+    color: red;
 }
 
 .right {
@@ -155,7 +155,7 @@ body {
 }
 
 .rtitle-p {
-    color: black;
+    color: red;
     font-size: 300%;
     text-align: center;
 }
@@ -163,9 +163,9 @@ body {
 .title {
     font-family: "Komika Display";
     font-size: 700%;
-    text-shadow: 10px 10px 5px black;
+    text-shadow: 10px 10px 5px red;
     color: darkcyan;
-    -webkit-text-stroke: 2px black;
+    -webkit-text-stroke: 2px red;
     margin: 0;
     text-align: center;
 }
@@ -174,22 +174,22 @@ body {
     margin: 0;
     font-size: 200%;
     text-align: center;
-    color: black;
+    color: red;
 }
 
 .principle-p {
     text-align: center;
-    color: black;
+    color: red;
 }
 
 .title-h2 {
     font-size: 300%;
     margin-top: 2%;
-    -webkit-text-stroke: 2px black;
+    -webkit-text-stroke: 2px red;
 }
 
 .corps, .title-h2, form {
-    color: black;
+    color: #f99;
     text-align: center;
 }
 
@@ -198,7 +198,7 @@ label {
 }
 
 input {
-    border: 1px solid black;
+    border: 1px solid red;
     border-radius: 10px;
     font-size: 120%;
     padding: 5px;

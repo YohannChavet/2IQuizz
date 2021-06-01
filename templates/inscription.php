@@ -10,10 +10,10 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php") {
 
 
 ?>
-<body>
+
 <style>
     .inscription-a {
-        text-decoration: underline;
+        text-decoration:underline;
 </style>
 <div id="corps">
     <h1 class="title">2IQuizz</h1>

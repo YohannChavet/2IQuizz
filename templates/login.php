@@ -12,7 +12,7 @@ $passe = valider("passe", "COOKIE");
 if ($checked = valider("remember", "COOKIE")) $checked = "checked";
 
 ?>
-<body>
+
 <style>
     .connexion-a {
         text-decoration: underline;

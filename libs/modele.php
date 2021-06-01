@@ -239,6 +239,8 @@ return SQLINSERT($requete);
 				
 }
 
+
+
 function AuteurQuizz($IdQuizz){
 	$requete="SELECT Créa_Quizz
 			  FROM quizz
@@ -246,14 +248,87 @@ function AuteurQuizz($IdQuizz){
 return SQLGetChamp($requete);
 }
 
+
+
 function ajouterquestionVF($IDQ,$NQuestion,$Question,$VF){
 $requête="INSERT INTO vrai_faux (ID_Quizz,N_QUestion,Question,VraiFaux)
 		  VALUES ('$IDQ','$NQuestion','$Question','$VF')";
 return SQLINSERT($requête);
 }
+
+
+
 function ajouterquestionQCM($IDQ,$NQuestion,$Question,$Reponse,$C1,$C2,$C3){
-	$requête="INSERT INTO vrai_faux (ID_Quizz,N_QUestion,Question,Reponse,CHOIX1,CHOIX2,CHOIX3)
-	VALUES ('$IDQ','$NQuestion','$Question','$VF')";
+	$requête="INSERT INTO qcm (ID_Quizz,N_QUestion,Question,Reponse,CHOIX1,CHOIX2,CHOIX3)
+	VALUES ('$IDQ','$NQuestion','$Question','$Reponse','$C1','$C2','$C3')";
 return SQLINSERT($requête);
+}
+
+
+
+function Pseudo($Iduser){
+	$requete="SELECT Pseudo
+			  FROM utilisateurs
+			  WHERE ID='$Iduser'";
+return SQLGetChamp($requete);
+}
+
+
+
+function listerquestionVF($idQuizz){
+$requête ="SELECT N_Question,Question,VraiFaux
+			FROM vrai_faux
+			WHERE ID_Quizz='$idQuizz'";
+return parcoursRs(SQLSELECT($requête));
+}
+
+
+
+function listerquestionQCM($idQuizz){
+	$requête ="SELECT N_Question,Question,Reponse,CHOIX1,CHOIX2,CHOIX3
+			   FROM QCM
+			   WHERE ID_Quizz='$idQuizz'";
+return parcoursRs(SQLSELECT($requête));
+}
+
+
+
+function IsVRaiFaux($idQuizz){
+$type='Type';
+	$requete="SELECT $type
+			  FROM quizz
+			  WHERE ID='$idQuizz'";
+$aux=SQLGetChamp($requete);
+if($aux==1){
+	return 0;
+}
+else {
+	return 1;
+}
+}
+
+function modifierquestionVF($IDQ,$NQuestion,$Question,$VF){
+	$requête="UPDATE vrai_faux 
+		      SET Question='$Question',VraiFaux='$VF'
+			  WHERE ID_Quizz='$IDQ' and N_Question='$NQuestion'";
+	return SQLUPDATE($requête);
+	}
+function modifierquestionQCM($IDQ,$NQuestion,$Question,$Reponse,$CHOIX1,$CHOIX2,$CHOIX3){
+		$requête="UPDATE qcm
+				  SET Question='$Question',Reponse='$Reponse',CHOIX1='$CHOIX1',CHOIX2='$CHOIX2',CHOIX3='$CHOIX3'
+				  WHERE ID_Quizz='$IDQ' and N_Question='$NQuestion'";
+		return SQLUPDATE($requête);
+		}
+
+function SupprimerVF($IDQuizz,$NQues){
+	$requête="DELETE FROM vrai_faux
+			  WHERE ID_Quizz='$IDQuizz' and N_Question='$NQues'";
+return SQLDELETE($requête);
+}
+
+function SupprimerQCM($IDQuizz,$NQues){
+	$requête="DELETE FROM qcm
+			  WHERE ID_Quizz='$IDQuizz' and N_Question='$NQues'";
+return SQLDELETE($requête);
 }
 ?>

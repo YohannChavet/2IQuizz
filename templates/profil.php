@@ -1,11 +1,20 @@
 <?php
 
-if (basename($_SERVER["PHP_SELF"]) != "index.php") {
-    header("Location:../index.php?view=login");
+if (basename($_SERVER["PHP_SELF"]) != "index.php")
+{
+    header("Location:../index.php?view=profil");
     die("");
 }
+include_once "libs/maLibUtils.php";
+include_once "libs/maLibSQL.pdo.php";
+include_once "libs/maLibSecurisation.php"; 
+include_once "libs/modele.php";     
 ?>
-<body>
+
+<style>
+    .profil-a {
+        text-decoration: underline;
+</style>
 <div class="flex">
     <div class="left">
     </div>
@@ -18,7 +27,7 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php") {
             }
             ?>
         </div>
-        <div class="right-box"><p class="rtitle-p">Mon Profil</p></div>
+        <div class="right-box"><p class="rtitle-p">Mon Profil</p><?php echo Pseudo($_SESSION["idUser"]);?></div>
     </div>
 </div>
 </body>
