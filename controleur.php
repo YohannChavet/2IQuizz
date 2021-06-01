@@ -69,7 +69,7 @@ session_start();
       if($Catégorie2=valider("Catégorie2"));
       if($T2Quizz=valider("T2Quizz"));
       CréerQuizz($NomQUizz,$Catégorie2,$T2Quizz,$_SESSION["idUser"]);
-      $qs = "?view=mes_quizz";
+      $qs = "view=mes_quizz";
       break;
     }
   }

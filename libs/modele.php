@@ -261,12 +261,12 @@ return SQLDELETE($requête);
 
 
 function CréerQuizz($NomQUizz,$Catégorie2,$T2Quizz,$ID){
+$requete1="SELECT ID FROM catégorie WHERE Catégorie='$Catégorie2'";
 
-$requete1="SELECT ID FROM catégorie WHERE catégorie.Catégorie='$Catégorie2'";
-$Cat=SQLSELECT($requete1);
-
+$Cat=SQLGetChamp($requete1);
+$date=SQLGetChamp("Select Now()");
 	$requete = "INSERT INTO quizz (Nom_quizz,Cat_Quizz,Date_Quizz,Créa_Quizz,Type_Quizz)
-				VALUES('$NomQUizz','$Cat',Now(),'$ID','$T2Quizz')";
+				VALUES('$NomQUizz','$Cat','$date','$ID','$T2Quizz')";
 return SQLINSERT($requete);
 				
 }
