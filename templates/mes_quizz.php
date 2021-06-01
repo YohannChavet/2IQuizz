@@ -2,9 +2,9 @@
 // Ce fichier permet de tester les fonctions développées dans le fichier malibforms.php
 
 // Si la page est appelée directement par son adresse, on redirige en passant pas la page index
-if (basename($_SERVER["PHP_SELF"]) == "conversations.php")
+if (basename($_SERVER["PHP_SELF"]) == "mes_quizz.php")
 {
-	header("Location:../index.php?view=accueil");
+	header("Location:../index.php?view=mes_quizz");
 	die("");
 }
 
@@ -66,4 +66,14 @@ switch($action){
 }
 
 mkTable($quizz,array("Nom_Quizz","Catégorie","Type_Quizz","Pseudo","Date_Quizz"));
+
+mkForm('controleur.php','GET');
+?><p class="label">Indiquez le Nom de Quizz : </p><?php
+mkInput("text","NomQUizz","");
+?><p class="label">Indiquez la Catégorie du Quizz : </p><?php
+mkSelect("Catégorie2",$catégorie,"Catégorie","Catégorie");
+?><p class="label">Indiquez le type du Quizz : </p><?php
+mkSelect("T2Quizz",$quizz,"Type_Quizz","Type_Quizz");
+mkInput("submit","action","Créer un Quizz");
+
 ?>

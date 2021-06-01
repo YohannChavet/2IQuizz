@@ -7,7 +7,6 @@ session_start();
   include_once "libs/modele.php"; 
 
   $qs = $_GET;
-
   if ($action = valider("action"))
   {
     ob_start ();
@@ -15,8 +14,6 @@ session_start();
 
 
     
-    if ($action != "Connexion") 
-      securiser("index.php");
       
     // L'utilisateur est-il admin ?
     $isAdmin = valider("isAdmin", "SESSION");
@@ -38,7 +35,6 @@ session_start();
           // Cf. maLibSecurisation
           if (verifUser($login,$passe)) {
             // tout s'est bien passé, on marque comme connecté dans la BDD
-            $qs["feedback"] = "Connexion réussie";
             connecterUtilisateur(valider("idUser", "SESSION"));
             // doit-on se souvenir de la personne ? 
             if (valider("remember")) {
@@ -54,9 +50,27 @@ session_start();
             $qs["feedback"] = "Identifiant ou mot de passe invalide";
           }
         }
-
       break;
 
+      case 'Inscription' :
+        if($login2=valider("login2"));
+        if($pseudo2=valider("pseudo2"));
+        if($passe2=valider("passe2"));
+        CréerUtilisateur($pseudo2,$login2,$passe2);
+        break;
+
+      case 'Logout' :
+        session_destroy();
+        deconnecterUtilisateur(valider("idUser", "SESSION"));
+        break;
+        
+      case 'Créer un Quizz' ;
+      if($NomQUizz=valider("NomQUizz"));
+      if($Catégorie2=valider("Catégorie2"));
+      if($T2Quizz=valider("T2Quizz"));
+      CréerQuizz($NomQUizz,$Catégorie2,$T2Quizz,$_SESSION["idUser"]);
+      $qs = "?view=mes_quizz";
+      break;
     }
   }
 

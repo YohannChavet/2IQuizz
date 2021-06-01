@@ -157,99 +157,118 @@ function listerUtilisateursConnectes()
 	"));
 }
 
-
-
-function listerConversations($mode="tout")
+function listertable($table)
 {
 
-	$requete = "SELECT * FROM conversations";
-  if ($mode == "actives") {
-    $requete = $requete . " WHERE active=1";
-  }
-  if ($mode == "inactives") {
-    $requete = $requete . " WHERE active=0";
-  }
-  $requete = $requete . ";";
+	$requete = "SELECT * 
+				FROM $table";
   return parcoursRs(SQLSelect($requete));
 }
 
 
-
-function archiverConversation($idConversation)
+function listerQuizz()
 {
 
-	return SQLUpdate("
-	  UPDATE conversations
-	  SET active = 0
-	  WHERE id='$idConversation';
-	");
+	$requete = "SELECT * 
+				FROM Quizz,utilisateurs,catégorie 
+				WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz";
+  return parcoursRs(SQLSelect($requete));
+}
+//Fonction de recherche 
+function TrierQuizzN($NQuizz){
+	$requete="SELECT * 
+			  FROM Quizz,utilisateurs,catégorie 
+			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and Quizz.Nom_Quizz='$NQuizz'";
+return parcoursRs(SQLSelect($requete));
+}
+
+function TrierQuizzC($CQuizz){
+	$requete="SELECT * 
+			  FROM Quizz,utilisateurs,catégorie 
+			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and utilisateurs.pseudo='$CQuizz'";
+return parcoursRs(SQLSelect($requete));
+}
+	
+function TrierQuizzT($TQuizz){
+	$requete="SELECT * 
+			  FROM Quizz,utilisateurs,catégorie 
+			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and Quizz.Type_Quizz='$TQuizz'";
+return parcoursRs(SQLSelect($requete));
+}
+
+function TrierQuizzCa($CaQuizz){
+	$requete="SELECT * 
+			  FROM Quizz,utilisateurs,catégorie u
+			  WHERE u.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and u.Catégorie='$CaQuizz'";
+return parcoursRs(SQLSelect($requete));
 }
 
 
-
-function creerConversation($theme)
+function listerQuizzC($id)
 {
+	$requete = "SELECT * 
+				FROM Quizz,utilisateurs,catégorie 
+				WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and utilisateurs.ID='$id' ";
+  return parcoursRs(SQLSelect($requete));
+}
 
-	SQLUpdate("
-	  INSERT INTO conversations(theme)
-	  VALUES ('$theme');
-	");
+//Fonction de recherche 
+function TrierQuizzNC($NQuizz,$id){
+	$requete="SELECT * 
+			  FROM Quizz,utilisateurs,catégorie 
+			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and Quizz.Nom_Quizz='$NQuizz' and utilisateurs.ID='$id'";
+return parcoursRs(SQLSelect($requete));
+}
 
-	return SQLGetChamp("
-	  SELECT MAX(id)
-	  FROM conversations
-	  WHERE theme='$theme';
-	");
+function TrierQuizzCC($CQuizz,$id){
+	$requete="SELECT * 
+			  FROM Quizz,utilisateurs,catégorie 
+			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and utilisateurs.pseudo='$CQuizz' and utilisateurs.ID='$id'";
+return parcoursRs(SQLSelect($requete));
+}
+	
+function TrierQuizzTC($TQuizz,$id){
+	$requete="SELECT * 
+			  FROM Quizz,utilisateurs,catégorie 
+			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and Quizz.Type_Quizz='$TQuizz' and utilisateurs.ID='$id'";
+return parcoursRs(SQLSelect($requete));
+}
+
+function TrierQuizzCaC($CaQuizz,$id){
+	$requete="SELECT * 
+			  FROM Quizz,utilisateurs,catégorie u
+			  WHERE u.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and u.Catégorie='$CaQuizz' and utilisateurs.ID='$id'";
+return parcoursRs(SQLSelect($requete));
 }
 
 
-
-function reactiverConversation($idConversation)
-{	
-
-	return SQLUpdate("
-	  UPDATE conversations
-	  SET active = 1
-	  WHERE id='$idConversation';
-	");
-}
-
-
-
-function supprimerConversation($idConv)
+function supprimerQuizz($idQuizz)
 {
-
-	SQLDelete("
-	  DELETE FROM message
-	  WHERE idConversation='$idConv';
-	");
-	return SQLDelete("
-	  DELETE FROM conversations
-	  WHERE id='$idConv';
-	");
+$requete="DELETE FROM qcm
+		  WHERE Id_Quizz='$idQuizz'";
+SQLDELETE($requête);
+$requete="DELETE FROM vrai_faux
+		  WHERE Id_Quizz='$idQuizz'";
+SQLDELETE($requête);
+$requete="DELETE FROM quizz_participé
+		  WHERE Id_QUIZZ='$idQuizz'";
+SQLDELETE($requête);
+$requete="DELETE FROM QUIZZ
+		  WHERE Id='$idQuizz'";
+return SQLDELETE($requête);
 }
 
 
 
-function enregistrerMessage($idConversation, $idAuteur, $contenu)
-{
+function CréerQuizz($NomQUizz,$Catégorie2,$T2Quizz,$ID){
 
-	$contenu = str_replace("<", "&lt;", $contenu);
-	$contenu = str_replace(">", "&gt;", $contenu);
-	$contenu = str_replace("&", "&amp;", $contenu);
-	return SQLInsert("
-	  INSERT INTO message(idConversation, idAuteur, contenu)
-	  VALUES ('$idConversation', '$idAuteur', '$contenu');
-	");
+$requete1="SELECT ID FROM catégorie WHERE catégorie.Catégorie='$Catégorie2'";
+$Cat=SQLSELECT($requete1);
+
+	$requete = "INSERT INTO quizz (Nom_quizz,Cat_Quizz,Date_Quizz,Créa_Quizz,Type_Quizz)
+				VALUES('$NomQUizz','$Cat',Now(),'$ID','$T2Quizz')";
+return SQLINSERT($requete);
+				
 }
-
-
-
-
-
-
-
-
-
 
 ?>
