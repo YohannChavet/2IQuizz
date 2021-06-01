@@ -12,10 +12,6 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php")
 
 </head>
 <body>
-<style>
-    .profil-a {
-        text-decoration:underline;
-</style>
 <div class="flex">
     <div class="left">
     </div>

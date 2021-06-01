@@ -43,8 +43,8 @@ if (!valider("connecte", "SESSION")) {
 }
 else{
 echo"
-  <div class=\"deconnexion-div\"><a class=\"deconnexion-a\" href=\"controleur.php?action=Logout\">Déconnexion</a></div>
-  <div class=\"mes_quizz-div\"><a class=\"mes_quizz-a\" href=\"index.php?view=mes_quizz\">Mes Quizz</a></div>
+  <div class=\"deconnexion-div\"><a class=\"mes_quizz-a\" href=\"controleur.php?action=Logout\">Déconnexion</a></div>
+  <div class=\"mes_quizz-div\"><a class=\"deconnexion-a\" href=\"index.php?view=mes_quizz\">Mes Quizz</a></div>
   <div class=\"profil-div\"><a class=\"profil-a\" href=\"index.php?view=profil\">Mon Profil</a></div>";
 }
 

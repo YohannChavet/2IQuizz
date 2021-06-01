@@ -13,13 +13,9 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php")
 
 </head>
 <body>
-<style>
-    .accueil-a {
-        text-decoration:underline;
-</style>
 <div class="flex">
     <div class="left">
-        <div class="title-div">
+        <div class="title">
             <h1 class="title">2IQuizz</h1>
         </div>
         <p class="principle-header-p">▼  ━  Le principe du site  ━  ▼</p>
