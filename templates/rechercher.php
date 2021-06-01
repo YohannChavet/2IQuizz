@@ -21,8 +21,11 @@ $quizz = listerquizz();
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-
-
+<body>
+<style>
+    .rechercher-a {
+        text-decoration:underline;
+</style>
 <div id="recherche">
 <p class="label">Indiquez le nom du Quizz : </p><?php
 mkForm('index.php','GET');
@@ -69,3 +72,4 @@ switch($action){
 
 mkTable($quizz,array("Nom_Quizz","Catégorie","Type_Quizz","Pseudo","Date_Quizz"));
 ?>
+</body>

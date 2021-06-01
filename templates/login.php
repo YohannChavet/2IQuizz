@@ -19,6 +19,10 @@ if ($checked = valider("remember", "COOKIE")) $checked = "checked";
 
 </head>
 <body>
+<style>
+    .connexion-a {
+        text-decoration:underline;
+</style>
 <div id="corps">
 
 <h1>Connexion</h1>

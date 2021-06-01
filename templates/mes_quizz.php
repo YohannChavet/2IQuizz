@@ -21,8 +21,11 @@ $quizz = listerQuizzC($_SESSION["idUser"]);
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-
-
+<body>
+<style>
+    .mes_quizz-a {
+        text-decoration:underline;
+</style>
 <div id="recherche">
 <p class="label">Indiquez le nom du Quizz : </p><?php
 mkForm('index.php','GET');
@@ -77,3 +80,4 @@ mkSelect("T2Quizz",$quizz,"Type_Quizz","Type_Quizz");
 mkInput("submit","action","Créer un Quizz");
 
 ?>
+</body>
