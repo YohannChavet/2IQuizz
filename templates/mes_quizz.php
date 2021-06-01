@@ -85,7 +85,6 @@ foreach($quizz as $ligne){
     echo "<th>";
     echo $ligne['Type'];
     echo "</th>";
-    echo "</th>";
     echo "<th>";
     echo $ligne['Pseudo'];
     echo "</th>";
