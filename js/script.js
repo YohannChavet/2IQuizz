@@ -1,13 +1,3 @@
-/* let cookie = document.cookie;
-if (cookie.indexOf("theme=") == -1) {
-    document.cookie = "theme=dark; path=/; domain=localhost";
-    theme("dark");
-} else {
-    theme(cookie.indexOf("theme=")
-}
-
-function check_cookie_name(name)
-{ */
 var match = document.cookie.match(new RegExp('(^| )theme=([^;]+)'));
 if (match) {
     theme(match[2]);
@@ -16,10 +6,14 @@ if (match) {
     theme("dark");
 }
 
-//just call a function to load your CSS
-//this path should be relative your HTML location
-
 function theme(color) {
+    const sheets = [...document.getElementsByTagName('link')];
+
+    sheets.forEach(x => {
+        const type = x.getAttribute('type');
+        !!type && type.toLowerCase() === 'text/css'
+        && x.parentNode.removeChild(x);
+    });
     document.cookie = "theme=" + color + "; path=/; domain=localhost";
 
     /* loads the css stylesheet corresponding to the theme */
@@ -28,13 +22,6 @@ function theme(color) {
     file.setAttribute("type", "text/css");
     file.setAttribute("href", "./css/" + color + ".css");
     document.head.appendChild(file);
-
-    /*let theme = window.location.href.indexOf("&theme=");
-    if (theme == -1) {
-        window.location.href += "&theme=" + color;
-    } else {
-        window.location.href = window.location.href.substring(0, theme + 6) + color
-    }*/
 }
 
 function view(page) {

@@ -26,14 +26,21 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\" ?>";
 <body>
 <div class="header">
     <h3 class="header-theme">Thème :</h3>
-    <object class="svg-theme" data="./ressources/day.svg" width="36" height="36" usemap="#day"></object>
-    <object class="svg-theme" data="./ressources/night.svg" width="36" height="36" usemap="#night"></object>
-    <map name="day">
-        <area shape="rect" coords="0, 1000%, 100%, 0" alt="Day" onclick="theme('light');">
-    </map>
-    <map name="night">
-        <area shape="rect" coords="0, 100%, 100%, 0" alt="Night" onclick="theme('dark');">
-    </map>
+    <a class="svg-light-a" onclick="theme('light');">
+        <span class="span-theme">
+        <object class="svg-theme" data="./ressources/day.svg" width="36" height="36"></object>
+        </span>
+    </a>
+    <a class="svg-dark-a" onclick="theme('dark');">
+        <span class="span-theme">
+        <object class="svg-theme" data="./ressources/night.svg" width="36" height="36"></object>
+        </span>
+    </a>
+    <a class="svg-red-a" onclick="theme('red');">
+        <span class="span-theme">
+        <object class="svg-theme" data="./ressources/red.svg" width="36" height="36"></object>
+        </span>
+    </a>
     <div class="accueil-div"><a class="accueil-a" onclick="view('accueil');">Accueil</a></div>
     <div class="rechercher-div"><a class="rechercher-a" onclick="view('rechercher');">Rechercher</a></div>
 
