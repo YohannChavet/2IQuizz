@@ -1,9 +1,8 @@
 <?php
 
-if (basename($_SERVER["PHP_SELF"]) != "index.php")
-{
-	header("Location:../index.php");
-	die("");
+if (basename($_SERVER["PHP_SELF"]) != "index.php") {
+    header("Location:../index.php");
+    die("");
 }
 
 // Pose qq soucis avec certains serveurs...
@@ -13,11 +12,11 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\" ?>";
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <!-- **** H E A D **** -->
-<head>	
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>2iQuizz</title>
-  <link rel="icon" type="image/png" href="ressources/2i.png" />
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>2iQuizz</title>
+    <link rel="icon" type="image/png" hssourceref="res/2i.png"/>
+    <script src="js/script.js"></script>
 
 </head>
 <!-- **** F I N **** H E A D **** -->
@@ -25,42 +24,44 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\" ?>";
 
 <!-- **** B O D Y **** -->
 <body>
+<div class="header">
+    <h3 class="header-theme">Thème :</h3>
+    <object class="svg-theme" data="./ressources/day.svg" width="36" height="36" usemap="#day"></object>
+    <object class="svg-theme" data="./ressources/night.svg" width="36" height="36" usemap="#night"></object>
+    <map name="day">
+        <area shape="rect" coords="0, 1000%, 100%, 0" alt="Day" onclick="theme('light');">
+    </map>
+    <map name="night">
+        <area shape="rect" coords="0, 100%, 100%, 0" alt="Night" onclick="theme('dark');">
+    </map>
+    <div class="accueil-div"><a class="accueil-a" onclick="view('accueil');">Accueil</a></div>
+    <div class="rechercher-div"><a class="rechercher-a" onclick="view('rechercher');">Rechercher</a></div>
 
+    <?php //TODO: Si l'utilisateur n'est pas connecte, on affiche un lien de connexion
 
-
-
-<?php
-//TODO: Si l'utilisateur n'est pas connecte, on affiche un lien de connexion 
-echo "
-<div class=\"header\"><div class=\"accueil-div\"><a class=\"accueil-a\" href=\"index.php?view=accueil\">Accueil</a></div>
-<div class=\"rechercher-div\"><a class=\"rechercher-a\" href=\"index.php?view=rechercher\">Rechercher</a></div>
-";
-
-if (!valider("connecte", "SESSION")) {
-  echo "
-  <div class=\"connexion-div\"><a class=\"connexion-a\" href=\"index.php?view=login\">Connexion</a></div>
-  <div class=\"inscription-div\"><a class=\"inscription-a\" href=\"index.php?view=inscription\">Inscription</a></div></header>";
-}
-else{
-echo"
+    if (!valider("connecte", "SESSION")) {
+        echo "
+  <div class=\"connexion-div\"><a class=\"connexion-a\" onclick=\"view('login');\">Connexion</a></div>
+  <div class=\"inscription-div\"><a class=\"inscription-a\" onclick=\"view('inscription');\">Inscription</a></div></header>";
+    } else {
+        echo "
   <div class=\"deconnexion-div\"><a class=\"mes_quizz-a\" href=\"controleur.php?action=Logout\">Déconnexion</a></div>
-  <div class=\"mes_quizz-div\"><a class=\"deconnexion-a\" href=\"index.php?view=mes_quizz\">Mes Quizz</a></div>
-  <div class=\"profil-div\"><a class=\"profil-a\" href=\"index.php?view=profil\">Mon Profil</a></div>";
-}
+  <div class=\"mes_quizz-div\"><a class=\"deconnexion-a\" onclick=\"view('mes_quizz')\">Mes Quizz</a></div>
+  <div class=\"profil-div\"><a class=\"profil-a\" onclick=\"view('profil');\">Mon Profil</a></div>";
+    }
 
 
+    if ($feedback = valider("feedback", "GET")) {
+        echo "<p class=\"warning\">$feedback</p>";
+    }
 
-if ($feedback = valider("feedback", "GET")) {
-  echo "<p class=\"warning\">$feedback</p>";
-}
-
-?>
-
-
-<?php
+    ?>
 
 
-?>
+    <?php
+
+
+    ?>
 
 </div>
 

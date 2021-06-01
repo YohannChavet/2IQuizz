@@ -10,15 +10,10 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php") {
 
 
 ?>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-
-</head>
 <body>
 <style>
     .inscription-a {
-        text-decoration:underline;
+        text-decoration: underline;
 </style>
 <div id="corps">
     <h1 class="title">2IQuizz</h1>
@@ -38,3 +33,4 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php") {
 
 
 </div>
+</body>
