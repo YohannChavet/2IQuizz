@@ -1,0 +1,190 @@
+@font-face {
+    font-family: "Komika Display";
+    src: url("/ressources/komika-display.regular.ttf") format("ttf");
+}
+
+body {
+    font-family: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Lucida Console", monospace;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: #3b4866;
+  }
+.header {
+      font-size: 120%;
+      background-color: #7280ff;
+      display: flow-root;
+  }
+.accueil-div, .rechercher-div {
+      float: left;
+      margin-left: 5%;
+      margin-top: 0.5%;
+      margin-bottom: 0.6%;
+  }
+.mes_quizz-div {
+    float: left;
+    margin-left: 5%;
+    margin-top: 0.5%;
+    margin-bottom: 0.6%;
+}
+.mes_quizz-a, .profil-a, .deconnexion-a,.connexion-a, .inscription-a, .accueil-a, .rechercher-a{
+    color: white;
+    text-decoration:none;
+}
+.mes_quizz-a:hover, .profil-a:hover, .deconnexion-a:hover,.accueil-a:hover, .rechercher-a:hover,.connexion-a:hover, .inscription-a:hover {
+    text-decoration:underline;
+}
+.connexion-div, .inscription-div, .profil-div, .deconnexion-div  {
+    float: right;
+    margin-right: 5%;
+    margin-top: 0.5%;
+    margin-bottom: 0.6%;
+}
+
+.warning {
+    display: none;
+}
+
+.flex {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    left: 0;
+    right: 0;
+}
+/* check out this awesome trick I used https://css-tricks.com/snippets/css/css-triangle/ */
+.spike {
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-right: 40px solid black;
+}
+
+.down-triangle {
+    margin-top: 1.9%;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 20px solid;
+}
+
+.left {
+    width: 70%;
+    color: white;
+}
+
+.right {
+    font-family: "Komika Display";
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    /*overflow:hidden;*/
+    -webkit-animation: right 5s cubic-bezier(0.175, 0.885, 0.320, 1.275) infinite alternate both;
+    animation: right 5s cubic-bezier(0.175, 0.885, 0.320, 1.275) infinite alternate both;
+}
+/**
+ * ----------------------------------------
+ * animation scale-up-horizontal-right
+ * ----------------------------------------
+ */
+@-webkit-keyframes right {
+    0% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+    80% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+    100% {
+        -webkit-transform: scaleX(1.1);
+        transform: scaleX(1.1);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+}
+@keyframes right {
+    0% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+    80% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+    100% {
+        -webkit-transform: scaleX(1.1);
+        transform: scaleX(1.1);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+}
+
+
+
+.right-box {
+    background-color: black;
+    width: 100%;
+}
+
+.rtitle-p {
+    color: white;
+    font-size: 300%;
+    text-align: center;
+}
+
+.title {
+    font-family: "Komika Display";
+    font-size: 700%;
+    text-shadow: 10px 10px 5px black;
+    color: darkcyan;
+    -webkit-text-stroke: 2px black;
+    margin: 0;
+    text-align: center;
+}
+
+.principle-header-p {
+    margin: 0;
+    font-size: 200%;
+    text-align: center;
+}
+.principle-p {
+    text-align: center;
+}
+
+.title-h2 {
+    font-size: 300%;
+    margin-top: 2%;
+    -webkit-text-stroke: 2px black;
+}
+.corps, .title-h2, form {
+    color: white;
+    font-family: "Komika Display";
+    text-align: center;
+}
+label {
+    font-size: 150%;
+}
+input {
+    border-radius: 10px;
+    font-size: 120%;
+}
+
+input#remember {
+    width: 20px;
+    height: 20px;
+}
+/*input[type=checkbox]:checked + label {
+    color: #0f0;
+}*/
