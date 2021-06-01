@@ -74,7 +74,7 @@ echo "<tr>
       </tr>";
 foreach($quizz as $ligne){
     echo "<tr>";
-    echo "<th class=\"scope\"   ><a href=index.php?view=quizz?IDQuizz=";
+    echo "<th class=\"scope\"   ><a href=index.php?view=quizz&IDQuizz=";
     echo $ligne['IDQuizz'];
     echo ">";
     echo $ligne['Nom_Quizz'];
@@ -105,5 +105,4 @@ mkSelect("Catégorie2",$catégorie,"Catégorie","Catégorie");
 ?><p class="label">Indiquez le type du Quizz : </p><?php
 mkSelect("T2Quizz",$type,"Type","Type");
 mkInput("submit","action","Créer un Quizz");
-
 ?>

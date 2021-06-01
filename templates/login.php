@@ -39,3 +39,4 @@ if ($checked = valider("remember", "COOKIE")) $checked = "checked";
 
 
 </div>
+</body>

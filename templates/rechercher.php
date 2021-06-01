@@ -14,18 +14,15 @@ include "libs/maLibForms.php";
 
 $catégorie=listertable('catégorie');
 $quizz = listerquizz();
-
+$type = listertable('type_quizz');
 ?>
 
 <head>	
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body>
-<style>
-    .rechercher-a {
-        text-decoration:underline;
-</style>
+
+
 <div id="recherche">
 <p class="label">Indiquez le nom du Quizz : </p><?php
 mkForm('index.php','GET');
@@ -38,7 +35,7 @@ mkInput('submit','action','Rechercher par Auteur');
 mkSelect("Catégorie",$catégorie,"Catégorie","Catégorie");
 mkInput('submit','action','Rechercher par catégorie');
 ?><p class="label">Indiquez le type du Quizz : </p><?php
-mkSelect("TQuizz",$quizz,"Type_Quizz","Type_Quizz");
+mkSelect("TQuizz",$type,"Type","Type");
 mkInput('hidden','view','rechercher');
 mkInput('submit','action','Rechercher par type');
 endForm();
@@ -59,7 +56,7 @@ switch($action){
 
     case 'Rechercher par catégorie' :
         $quizz = TrierQuizzCa($_GET['Catégorie']);
-        break;
+        break;  
         
     case 'Rechercher par type' :
         $quizz = TrierQuizzT($_GET['TQuizz']) ;
@@ -70,6 +67,37 @@ switch($action){
     break;
 }
 
-mkTable($quizz,array("Nom_Quizz","Catégorie","Type_Quizz","Pseudo","Date_Quizz"));
+echo "<table>";
+echo "<tr>
+      <th scope=\"col\">Nom</th>
+      <th scope=\"col\">Catégorie</th>
+      <th scope=\"col\">Type</th>
+      <th scope=\"col\">Pseudo</th>
+      <th scope=\"col\">Date</th>
+      </tr>";
+foreach($quizz as $ligne){
+    echo "<tr>";
+    echo "<th class=\"scope\"   ><a href=index.php?view=quizz&IDQuizz=";
+    echo $ligne['IDQuizz'];
+    echo ">";
+    echo $ligne['Nom_Quizz'];
+    echo "</a></th>";
+    echo "<th>";
+    echo $ligne['Catégorie'];
+    echo "</th>";
+    echo "<th>";
+    echo $ligne['Type'];
+    echo "</th>";
+    echo "</th>";
+    echo "<th>";
+    echo $ligne['Pseudo'];
+    echo "</th>";
+    echo "<th>";
+    echo $ligne['Date_Quizz'];
+    echo "</th>";
+    echo "</tr>";
+}
+echo "</table>";
+
+echo "</a>";
 ?>
-</body>

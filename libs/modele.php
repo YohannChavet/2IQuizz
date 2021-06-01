@@ -111,27 +111,6 @@ function changerPseudo($idUser,$pseudo)
 	");
 }
 
-function promouvoirAdmin($idUser)
-{
-
-	return SQLUpdate("
-	  UPDATE utilisateurs
-	  SET admin = 1
-	  WHERE id='$idUser';
-	");
-}
-
-function retrograderUser($idUser)
-{
-
-	return SQLUpdate("
-	  UPDATE utilisateurs
-	  SET admin = 0
-	  WHERE id='$idUser';
-	");
-}
-
-
 
 include_once("maLibUtils.php");
 
@@ -165,29 +144,29 @@ function listerQuizz()
 //Fonction de recherche 
 function TrierQuizzN($NQuizz){
 	$requete="SELECT *,quizz.ID as IDQuizz 
-			  FROM Quizz,utilisateurs,catégorie 
-			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and Quizz.Nom_Quizz='$NQuizz'";
+			  FROM Quizz,utilisateurs,catégorie,type_quizz
+			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and Quizz.Nom_Quizz='$NQuizz' and type_quizz.ID=Quizz.Type";
 return parcoursRs(SQLSelect($requete));
 }
 
 function TrierQuizzC($CQuizz){
 	$requete="SELECT *,quizz.ID as IDQuizz 
-			  FROM Quizz,utilisateurs,catégorie 
-			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and utilisateurs.pseudo='$CQuizz'";
+			  FROM Quizz,utilisateurs,catégorie,type_quizz
+			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and utilisateurs.pseudo='$CQuizz' and type_quizz.ID=Quizz.Type";
 return parcoursRs(SQLSelect($requete));
 }
 	
 function TrierQuizzT($TQuizz){
 	$requete="SELECT *,quizz.ID as IDQuizz 
-			  FROM Quizz,utilisateurs,catégorie 
-			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and Quizz.Type_Quizz='$TQuizz'";
+			  FROM Quizz,utilisateurs,catégorie,type_quizz
+			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and type_quizz.type='$TQuizz' and type_quizz.ID=Quizz.Type";
 return parcoursRs(SQLSelect($requete));
 }
 
 function TrierQuizzCa($CaQuizz){
 	$requete="SELECT *,quizz.ID as IDQuizz 
-			  FROM Quizz,utilisateurs,catégorie u
-			  WHERE u.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and u.Catégorie='$CaQuizz'";
+			  FROM Quizz,utilisateurs,catégorie u,type_quizz
+			  WHERE u.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and u.Catégorie='$CaQuizz' and type_quizz.ID=Quizz.Type";
 return parcoursRs(SQLSelect($requete));
 }
 
@@ -203,29 +182,29 @@ function listerQuizzC($id)
 //Fonction de recherche 
 function TrierQuizzNC($NQuizz,$id){
 	$requete="SELECT *,quizz.ID as IDQuizz 
-			  FROM Quizz,utilisateurs,catégorie 
-			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and Quizz.Nom_Quizz='$NQuizz' and utilisateurs.ID='$id'";
+			  FROM Quizz,utilisateurs,catégorie,type_quizz
+			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and Quizz.Nom_Quizz='$NQuizz' and utilisateurs.ID='$id' and type_quizz.ID=Quizz.Type";
 return parcoursRs(SQLSelect($requete));
 }
 
 function TrierQuizzCC($CQuizz,$id){
 	$requete="SELECT *,quizz.ID as IDQuizz 
-			  FROM Quizz,utilisateurs,catégorie 
-			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and utilisateurs.pseudo='$CQuizz' and utilisateurs.ID='$id'";
+			  FROM Quizz,utilisateurs,catégorie,type_quizz
+			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and utilisateurs.pseudo='$CQuizz' and utilisateurs.ID='$id' and type_quizz.ID=Quizz.Type";
 return parcoursRs(SQLSelect($requete));
 }
 	
 function TrierQuizzTC($TQuizz,$id){
 	$requete="SELECT *,quizz.ID as IDQuizz 
-			  FROM Quizz,utilisateurs,catégorie 
-			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and Quizz.Type_Quizz='$TQuizz' and utilisateurs.ID='$id'";
+			  FROM Quizz,utilisateurs,catégorie,type_quizz
+			  WHERE catégorie.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and type_quizz.type='$TQuizz' and utilisateurs.ID='$id' and type_quizz.ID=Quizz.Type";
 return parcoursRs(SQLSelect($requete));
 }
 
 function TrierQuizzCaC($CaQuizz,$id){
 	$requete="SELECT *,quizz.ID as IDQuizz 
-			  FROM Quizz,utilisateurs,catégorie u
-			  WHERE u.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and u.Catégorie='$CaQuizz' and utilisateurs.ID='$id'";
+			  FROM Quizz,utilisateurs,catégorie u,type_quizz
+			  WHERE u.ID=Quizz.Cat_Quizz and utilisateurs.ID=Quizz.Créa_Quizz and u.Catégorie='$CaQuizz' and utilisateurs.ID='$id' and type_quizz.ID=Quizz.Type";
 return parcoursRs(SQLSelect($requete));
 }
 
@@ -260,4 +239,21 @@ return SQLINSERT($requete);
 				
 }
 
+function AuteurQuizz($IdQuizz){
+	$requete="SELECT Créa_Quizz
+			  FROM quizz
+			  WHERE ID=$IdQuizz";
+return SQLGetChamp($requete);
+}
+
+function ajouterquestionVF($IDQ,$NQuestion,$Question,$VF){
+$requête="INSERT INTO vrai_faux (ID_Quizz,N_QUestion,Question,VraiFaux)
+		  VALUES ('$IDQ','$NQuestion','$Question','$VF')";
+return SQLINSERT($requête);
+}
+function ajouterquestionQCM($IDQ,$NQuestion,$Question,$Reponse,$C1,$C2,$C3){
+	$requête="INSERT INTO vrai_faux (ID_Quizz,N_QUestion,Question,Reponse,CHOIX1,CHOIX2,CHOIX3)
+	VALUES ('$IDQ','$NQuestion','$Question','$VF')";
+return SQLINSERT($requête);
+}
 ?>
