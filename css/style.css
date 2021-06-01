@@ -163,12 +163,12 @@ body {
     text-align: center;
 }
 
-.inscription-h1 {
+.title-h2 {
     font-size: 300%;
     margin-top: 2%;
     -webkit-text-stroke: 2px black;
 }
-.corps, .inscription-h1, form {
+.corps, .title-h2, form {
     color: white;
     font-family: "Komika Display";
     text-align: center;
@@ -180,3 +180,11 @@ input {
     border-radius: 10px;
     font-size: 120%;
 }
+
+input#remember {
+    width: 20px;
+    height: 20px;
+}
+/*input[type=checkbox]:checked + label {
+    color: #0f0;
+}*/

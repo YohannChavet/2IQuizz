@@ -22,7 +22,7 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php") {
 </style>
 <div id="corps">
     <h1 class="title">2IQuizz</h1>
-    <h1 class="inscription-h1">Inscription</h1>
+    <h2 class="title-h2">Inscription</h2>
 
     <div class="Form">
         <form action="controleur.php" method="GET">
