@@ -16,7 +16,7 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\" ?>";
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>2iQuizz</title>
-    <link rel="icon" type="image/png" hssourceref="res/2i.png"/>
+    <link rel="icon" type="image/png" href="./ressources/2i.png"/>
     <script src="js/script.js" type="text/javascript"></script>
 
 </head>
