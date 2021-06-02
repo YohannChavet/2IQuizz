@@ -7,6 +7,9 @@ if (basename($_SERVER["PHP_SELF"]) == "mes_quizz.php") {
     die("");
 }
 
+include "libs/modele.php";
+include "libs/maLibSecurisation.php";
+include "libs/maLibForms.php";
 
 $catégorie = listertable('catégorie');
 $quizz = listerQuizzC($_SESSION["idUser"]);
@@ -57,7 +60,7 @@ switch ($action) {
             echo "<tr>";
             echo "<th class=\"scope\"   ><a class='table-a' href=index.php?view=quizz&IDQuizz=";
             echo $ligne['IDQuizz'];
-            echo "&message= ''>";
+            echo ">";
             echo $ligne['Nom_Quizz'];
             echo "</a></th>";
             echo "<th>";

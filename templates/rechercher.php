@@ -7,7 +7,9 @@ if (basename($_SERVER["PHP_SELF"]) == "rechercher.php") {
     die("");
 }
 
-
+include "libs/modele.php";
+include "libs/maLibSecurisation.php";
+include "libs/maLibForms.php";
 
 $catégorie = listertable('catégorie');
 $quizz = listerquizz();
@@ -61,7 +63,7 @@ $type = listertable('type_quizz');
             echo "<tr>";
             echo "<th class=\"scope\"   ><a class='table-a' href=index.php?view=quizz&IDQuizz=";
             echo $ligne['IDQuizz'];
-            echo "&message= ''>";
+            echo ">";
             echo $ligne['Nom_Quizz'];
             echo "</a></th>";
             echo "<th>";

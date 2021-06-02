@@ -8,15 +8,17 @@ if (basename($_SERVER["PHP_SELF"]) == "quizz.php")
 	die("");
 }
 
+include "libs/modele.php";
+include "libs/maLibSecurisation.php";
+include "libs/maLibForms.php";
 
-echo $_GET['message'];
 $idQuizz=$_GET['IDQuizz'];
 $auteur = AuteurQuizz($_GET['IDQuizz']);
 if($auteur===$_SESSION["idUser"]){
     if(IsVRaiFaux($_GET['IDQuizz'])===1){
         mkForm('controleur.php','GET');
         ?><p class="label">Indiquez le numéro de la question : </p><?php
-        mkInput('number','NQues',0);
+        mkInput('number','NQues','');
         ?><p class="label">Indiquez la question : </p><?php
         mkInput('text','Question','');
 ?>
@@ -110,32 +112,7 @@ else{
 }
 }
 else{
-
-
-    if(IsVRaiFaux($_GET['IDQuizz'])==1){
-    $quizz=listerquestionVF($_GET['IDQuizz']); 
-    var_dump($quizz);
-    }
-    else{
-        
-    $quizz=listerquestionQCM($_GET['IDQuizz']); 
-    foreach($quizz as $ligne){
-        $table=tabale();
-        $asso=array(
-            'Reponse' => $ligne['Reponse'],
-            'PosR' => $table[0],
-            'CHOIX1' => $ligne['CHOIX1'],
-            'PosC1' => $table[1],
-            'CHOIX2' => $ligne['CHOIX2'],
-            'PosC2' => $table[2],
-            'CHOIX3' => $ligne['CHOIX3'],
-            'PosC3' => $table[3]
-        );
-    }
-    mkForm('controleur.php', 'GET');
-    afficherquestionQCM($quizz,$asso);
-    mkInput("submit","action","valider");
-    }
+    echo 'non';
 }
 
 ?>

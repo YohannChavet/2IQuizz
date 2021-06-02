@@ -1,14 +1,16 @@
 <?php
 
+// Si la page est appelée directement par son adresse, on redirige en passant pas la page index
 if (basename($_SERVER["PHP_SELF"]) != "index.php") {
     header("Location:../index.php?view=login");
     die("");
 }
 
+// Chargement eventuel des données en cookies
 $login = valider("login", "COOKIE");
 $passe = valider("passe", "COOKIE");
 if ($checked = valider("remember", "COOKIE")) $checked = "checked";
-//message($_GET['message']); Pas fonctionnel
+
 ?>
 
 <style>

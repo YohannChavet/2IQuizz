@@ -4,8 +4,11 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php")
 {
     header("Location:../index.php?view=profil");
     die("");
-} 
- 
+}
+include_once "libs/maLibUtils.php";
+include_once "libs/maLibSQL.pdo.php";
+include_once "libs/maLibSecurisation.php"; 
+include_once "libs/modele.php";     
 ?>
 
 <style>

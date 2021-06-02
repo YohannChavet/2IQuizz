@@ -31,7 +31,7 @@ function verifUserBdd($login,$passe)
 {
 
 
-	$SQL="SELECT ID FROM utilisateurs WHERE username=BINARY '$login' AND mdp=BINARY '$passe'";
+	$SQL="SELECT ID FROM utilisateurs WHERE username='$login' AND mdp='$passe'";
 
 	return SQLGetChamp($SQL);
 
@@ -330,97 +330,5 @@ function SupprimerQCM($IDQuizz,$NQues){
 	$requête="DELETE FROM qcm
 			  WHERE ID_Quizz='$IDQuizz' and N_Question='$NQues'";
 return SQLDELETE($requête);
-}
-
-function QuestionexisteVF($NQuestion,$Quizz){
-	$requete="SELECT ID
-			  FROM vrai_faux
-			  WHERE ID_Quizz='$Quizz' and N_Question='$NQuestion'";
-return SQLGetChamp($requete);
-}
-
-function QuestionexisteQCM($NQuestion,$Quizz,$type){
-	if($type==='QCM'){
-		$requete="SELECT ID
-				  FROM vrai_faux
-				  WHERE ID_Quizz='$Quizz' and N_Question='$NQuestion'";
-	return SQLGetChamp($requete);
-	}
-	return 0;
-}
-
-function tabale(){
-$nb_a_tirer = 4;
-$val_min = 1;
-$val_max = 4;
-$tab_result = array();
-while($nb_a_tirer != 0 )
-{
-  $nombre = mt_rand($val_min, $val_max);
-  if( !in_array($nombre, $tab_result) )
-  {
-    $tab_result[] = $nombre;
-    $nb_a_tirer--;
-  }
-}
-return $tab_result;
-}
-
-
-
-
-function afficherquestionQCM($quizz,$table){
-$i=0;
-$q=0;
-foreach($quizz as $ligne){
-	echo "<div class=\"NQuest\">";
-	echo "Question n° : ";
-	echo $ligne['N_Question'];
-	echo "</div>";
-	echo "<div class=\"Quest\">";
-	echo "Question : ";
-	echo $ligne['Question'];
-	echo "</div>";
-	$i = 0;
-	for($i;$i<=4;$i++){
-		foreach($table as $key => $value){
-			if($i===$value){
-			if($key=='PosR'){
-				echo "<p>";
-				echo $quizz[$q]['Reponse'];
-				echo "</p>";
-				mkRadioCb("radio",$ligne['N_Question'],"Reponse");
-			}
-			elseif($key=='PosC1'){
-				echo "<p>";
-				echo $quizz[$q]['CHOIX1'];
-				echo "</p>";
-				mkRadioCb("radio",$ligne['N_Question'],"CHOIX1");
-			}
-			elseif($key=='PosC2'){
-				echo "<p>";
-				echo $quizz[$q]['CHOIX2'];
-				echo "</p>";
-				mkRadioCb("radio",$ligne['N_Question'],"CHOIX2");
-			}
-			else{
-				echo "<p>";
-				echo $quizz[$q]['CHOIX3'];
-				echo "</p>";
-				mkRadioCb("radio",$ligne['N_Question'],"CHOIX3");
-			}
-			}
-		}
-		
-
-	}
-	$q=$q +1;
-}
-}
-
-
-function message($message=" "){
-	$aux = $message;
-	echo $aux;
 }
 ?>

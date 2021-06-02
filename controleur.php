@@ -1,11 +1,10 @@
 <?php
 session_start();
 
-include_once "libs/maLibForms.php";
-include_once "libs/maLibUtils.php";
-include_once "libs/maLibSQL.pdo.php";
-include_once "libs/maLibSecurisation.php"; 
-include_once "libs/modele.php"; 
+  include_once "libs/maLibUtils.php";
+  include_once "libs/maLibSQL.pdo.php";
+  include_once "libs/maLibSecurisation.php"; 
+  include_once "libs/modele.php"; 
 
   $qs = $_GET;
   if ($action = valider("action"))
@@ -48,7 +47,7 @@ include_once "libs/modele.php";
               setcookie("remember",false, time()-3600);
             }
           } else {
-            $qs= "view=login&message=Identifiant ou mot de passe invalide";
+            $qs["feedback"] = "Identifiant ou mot de passe invalide";
           }
         }
       break;
@@ -57,7 +56,7 @@ include_once "libs/modele.php";
         if($login2=valider("login2"));
         if($pseudo2=valider("pseudo2"));
         if($passe2=valider("passe2"));
-        CréerUtilisateur($login2,$pseudo2,$passe2);
+        CréerUtilisateur($pseudo2,$login2,$passe2);
         break;
 
       case 'Logout' :
@@ -73,75 +72,69 @@ include_once "libs/modele.php";
       $qs = "view=mes_quizz";
       break;
 
-      case 'Supprimer la question' :
-        if($type=valider("type"));
-        if($NQues=valider("NQues"));
-        $IDQuizz=$_GET['IDQuizz'];
 
-         if(QuestionexisteQCM($NQues,$IDQuizz,$type)!=0){
-          SupprimerQCM($IDQuizz,$NQues);
-           $message='';
-        }
-        elseif(QuestionexisteVF($NQues,$IDQuizz)!=0){
-          SupprimerVF($IDQuizz,$NQues);
-          $message='';
-          }
-        else{
-         $message='Sélectionnez une question existante';
-         }
-         $qs = "view=quizz&IDQuizz=$IDQuizz&message=$message";
-         break;
+
+
+
+
+
+      case 'Créer une question':
+      if($type=valider("type"));
+      if($Question=valider("Question"));
+      if($NQues=valider("NQues"));
+      $IDQuizz=$_GET['IDQuizz'];
+
+      if($type==='VraiFaux'){
+        if($VraiFaux=valider("VraiFaux"));
+        ajouterquestionVF($IDQuizz,$NQues,$Question,$VraiFaux);
+      }
+      else{
+        if($Reponse=valider("Reponse"));
+        if($CHOIX1=valider("CHOIX1"));
+        if($CHOIX2=valider("CHOIX2"));
+        if($CHOIX3=valider("CHOIX3"));
+        ajouterquestionQCM($IDQuizz,$NQues,$Question,$Reponse,$CHOIX1,$CHOIX2,$CHOIX3);
+      }
+      $qs = "view=quizz&IDQuizz=$IDQuizz";
+      break;
+
+
+
+
 
       case 'Modifier une question' :
-         if($type=valider("type"));
-         if($Question=valider("Question"));
-         if($NQues=valider("NQues"));
-         $IDQuizz=$_GET['IDQuizz'];
+        if($type=valider("type"));
+        if($Question=valider("Question"));
+        if($NQues=valider("NQues"));
+        $IDQuizz=$_GET['IDQuizz'];
   
-        if(QuestionexisteQCM($NQues,$IDQuizz,$type)!=0){
+        if($type==='VraiFaux'){
+          if($VraiFaux=valider("VraiFaux"));
+          modifierquestionVF($IDQuizz,$NQues,$Question,$VraiFaux);
+        }
+        else{
           if($Reponse=valider("Reponse"));
-           if($CHOIX1=valider("CHOIX1"));
-           if($CHOIX2=valider("CHOIX2"));
-           if($CHOIX3=valider("CHOIX3"));
-           modifierquestionQCM($IDQuizz,$NQues,$Question,$Reponse,$CHOIX1,$CHOIX2,$CHOIX3);
-           $message='';
+          if($CHOIX1=valider("CHOIX1"));
+          if($CHOIX2=valider("CHOIX2"));
+          if($CHOIX3=valider("CHOIX3"));
+          modifierquestionQCM($IDQuizz,$NQues,$Question,$Reponse,$CHOIX1,$CHOIX2,$CHOIX3);
         }
-         elseif(QuestionexisteVF($NQues,$IDQuizz)!=0){
-          if($VraiFaux=valider('VraiFaux'));
-           modifierquestionVF($IDQuizz,$NQues,$Question,$VraiFaux);
-           $message='';
-          }
-         else{
-        $message='Sélectionnez une question existante';
-        }
-        $qs = "view=quizz&IDQuizz=$IDQuizz&message=$message";
-        break;        
+        $qs = "view=quizz&IDQuizz=$IDQuizz";
+        break;
 
-
-         case 'Créer une question' :
+        case 'Supprimer la question' :
           if($type=valider("type"));
-          if($Question=valider("Question"));
           if($NQues=valider("NQues"));
           $IDQuizz=$_GET['IDQuizz'];
-  
-           if(QuestionexisteQCM($NQues,$IDQuizz,$type)===false){
-            if($Reponse=valider("Reponse"));
-             if($CHOIX1=valider("CHOIX1"));
-             if($CHOIX2=valider("CHOIX2"));
-             if($CHOIX3=valider("CHOIX3"));
-             ajouterquestionQCM($IDQuizz,$NQues,$Question,$Reponse,$CHOIX1,$CHOIX2,$CHOIX3);
-             $message='';
-           }
-           elseif(QuestionexisteVF($NQues,$IDQuizz)===false){
-            $VraiFaux=$_GET['VraiFaux'];
-            ajouterquestionVF($IDQuizz,$NQues,$Question,$VraiFaux);
-            $message='';
-           }
-          else{
-          $message='Le numéro de question existe déjà';
+    
+          if($type==='VraiFaux'){
+            SupprimerVF($IDQuizz,$NQues);
           }
-          $qs = "view=quizz&IDQuizz=$IDQuizz&message=$message";
-          break;        
+          else{
+            SupprimerQCM($IDQuizz,$NQues);
+          }
+          $qs = "view=quizz&IDQuizz=$IDQuizz";
+          break;
     }
     
   }
