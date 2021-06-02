@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Komika Display";
-    src: url("./ressources/komika-display.regular.ttf") format("ttf");
+    src: url("/ressources/komika-display.regular.ttf") format("ttf");
 }
 
 /* red : #f99 #9f3f3f red darkred

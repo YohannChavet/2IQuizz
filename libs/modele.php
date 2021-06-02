@@ -348,4 +348,37 @@ function QuestionexisteQCM($NQuestion,$Quizz,$type){
 	}
 	return 0;
 }
+
+function tabale(){
+$nb_a_tirer = 4;
+$val_min = 1;
+$val_max = 4;
+$tab_result = array();
+while($nb_a_tirer != 0 )
+{
+  $nombre = mt_rand($val_min, $val_max);
+  if( !in_array($nombre, $tab_result) )
+  {
+    $tab_result[] = $nombre;
+    $nb_a_tirer--;
+  }
+}
+return $tab_result;
+}
+
+
+
+
+function afficherquestion($quizz,$table){
+foreach($quizz as $ligne){
+	echo "<div class=\"NQuest\">";
+	echo "Question n° :";
+	echo $ligne['N_Question'];
+	echo "</div>";
+	echo "<div class=\"Quest\">";
+	echo "Question :";
+	echo $ligne['Question'];
+	echo "</div>";
+}
+}
 ?>

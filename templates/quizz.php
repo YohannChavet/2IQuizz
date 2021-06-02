@@ -112,7 +112,31 @@ else{
 }
 }
 else{
-    echo 'non';
+
+
+    if(IsVRaiFaux($_GET['IDQuizz'])===1){
+    $quizz=listerquestionVF($_GET['IDQuizz']); 
+    var_dump($quizz);
+    }
+    else{
+    $quizz=listerquestionQCM($_GET['IDQuizz']); 
+    foreach($quizz as $ligne){
+        $table=tabale();
+        $asso=array(
+            'Reponse' => $ligne['Reponse'],
+            'PosR' => $table[0],
+            'CHOIX1' => $ligne['CHOIX1'],
+            'PosC1' => $table[1],
+            'CHOIX2' => $ligne['CHOIX2'],
+            'PosC2' => $table[2],
+            'CHOIX3' => $ligne['CHOIX3'],
+            'PosC3' => $table[3]
+        );
+
+    }
+    afficherquestion($quizz,$table);
+    var_dump($quizz);
+    }
 }
 
 ?>
