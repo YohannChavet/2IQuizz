@@ -44,75 +44,75 @@ switch ($action) {
 </style>
 <div class="flex">
     <div class="left">
-        <?php
-        echo "<table>";
-        echo "<tr>
-      <th class=\"row1\" scope=\"col\">Nom</th>
-      <th class=\"row1\" scope=\"col\">Catégorie</th>
-      <th class=\"row1\" scope=\"col\">Type</th>
-      <th class=\"row1\" scope=\"col\">Pseudo</th>
-      <th class=\"row1\" scope=\"col\" id=\"last-col\">Date</th>
-      </tr>";
-        foreach ($quizz as $ligne) {
-            echo "<tr>";
-            echo "<th class=\"scope\"   ><a class='table-a' href=index.php?view=quizz&IDQuizz=";
-            echo $ligne['IDQuizz'];
-            echo "&message= ''>";
-            echo $ligne['Nom_Quizz'];
-            echo "</a></th>";
-            echo "<th>";
-            echo $ligne['Catégorie'];
-            echo "</th>";
-            echo "<th>";
-            echo $ligne['Type'];
-            echo "</th>";
-            echo "<th>";
-            echo $ligne['Pseudo'];
-            echo "</th>";
-            echo "<th id=\"last-col\">";
-            echo $ligne['Date_Quizz'];
-            echo "</th>";
-            echo "</tr>";
-        }
-        echo "</table>";
-
-        echo "</a>";
-        mkForm('controleur.php', 'GET');
-        ?><p class="mlabel">Indiquez le Nom de Quizz : </p><?php
-        mkInput("text", "NomQUizz", "");
-        ?><p class="mlabel">Indiquez la Catégorie du Quizz : </p><?php
-        mkSelect("Catégorie2", $catégorie, "Catégorie", "Catégorie");
-        ?><p class="mlabel">Indiquez le type du Quizz : </p><?php
-        mkSelect("T2Quizz", $type, "Type", "Type");
-        mkInput("submit", "action", "Créer un Quizz");
-        ?>
-    </div>
-    <div class="right">
-        <div class="spikes">
+        <p class="l-quizz">Créer un Quizz</p>
             <?php
-
-            for ($i = 1; $i <= 50; $i++) {
-                echo '<div class="spike"></div>';
+            mkForm('controleur.php', 'GET');
+            ?><p class="mlabel">Nom du Quizz : </p><?php
+            mkInput("text", "NomQUizz", "");
+            ?><p class="mlabel">Catégorie du Quizz : </p><?php
+            mkSelect("Catégorie2", $catégorie, "Catégorie", "Catégorie");
+                ?><p class="mlabel">Type de Quizz : </p><?php
+            mkSelect("T2Quizz", $type, "Type", "Type");
+            mkInput("submit", "action", "Créer un Quizz");
+            echo "<hr><p class='l-quizz'>Liste de Mes Quizz:</p><table>";
+            echo "<tr>
+      <th scope=\"col\">Nom</th>
+      <th scope=\"col\">Catégorie</th>
+      <th scope=\"col\">Type</th>
+      <th scope=\"col\">Pseudo</th>
+      <th scope=\"col\" id=\"last-col\">Date</th>
+      </tr>";
+            foreach ($quizz as $ligne) {
+                echo "<tr>";
+                echo "<th class=\"scope\"   ><a class='table-a' href=index.php?view=quizz&IDQuizz=";
+                echo $ligne['IDQuizz'];
+                echo "&message= ''>";
+                echo $ligne['Nom_Quizz'];
+                echo "</a></th>";
+                echo "<th>";
+                echo $ligne['Catégorie'];
+                echo "</th>";
+                echo "<th>";
+                echo $ligne['Type'];
+                echo "</th>";
+                echo "<th>";
+                echo $ligne['Pseudo'];
+                echo "</th>";
+                echo "<th>";
+                echo $ligne['Date_Quizz'];
+                echo "</th>";
+                echo "</tr>";
             }
-            ?>
+            echo "</table>";
+
+            echo "</a>"; ?>
         </div>
-        <div class="right-box"><p class="rtitle-p">Mes Quizz</p>
-            <div id="recherche">
-                <p class="label">Indiquez le nom du Quizz : </p><?php
-                mkForm('index.php', 'GET');
-                mkInput("text", "NomQ", "");
-                mkInput('submit', 'action', 'Rechercher par Nom');
-                ?><?php
-                ?><p class="label">Indiquez la catégorie du Quizz : </p><?php
-                mkSelect("Catégorie", $catégorie, "Catégorie", "Catégorie");
-                mkInput('submit', 'action', 'Rechercher par catégorie');
-                ?><p class="label">Indiquez le type du Quizz : </p><?php
-                mkSelect("TQuizz", $type, "Type", "Type");
-                mkInput('hidden', 'view', 'mes_quizz');
-                mkInput('submit', 'action', 'Rechercher par type');
-                endForm();
-                ?></div>
+        <div class="right">
+            <div class="spikes">
+                <?php
+
+                for ($i = 1; $i <= 50; $i++) {
+                    echo '<div class="spike"></div>';
+                }
+                ?>
+            </div>
+            <div class="right-box"><p class="rtitle-p">Mes Quizz</p>
+                <div id="recherche">
+                    <p class="label">Indiquez le nom du Quizz : </p><?php
+                    mkForm('index.php', 'GET');
+                    mkInput("text", "NomQ", "");
+                    mkInput('submit', 'action', 'Rechercher par Nom');
+                    ?><?php
+                    ?><p class="label">Indiquez la catégorie du Quizz : </p><?php
+                    mkSelect("Catégorie", $catégorie, "Catégorie", "Catégorie");
+                    mkInput('submit', 'action', 'Rechercher par catégorie');
+                    ?><p class="label">Indiquez le type du Quizz : </p><?php
+                    mkSelect("TQuizz", $type, "Type", "Type");
+                    mkInput('hidden', 'view', 'mes_quizz');
+                    mkInput('submit', 'action', 'Rechercher par type');
+                    endForm();
+                    ?></div>
+            </div>
         </div>
     </div>
-</div>
-</body>
+    </body>
