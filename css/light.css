@@ -6,6 +6,7 @@ body {
     align-items: center;
     background-color: white;
 }
+
 /* red : #f99 #9f3f3f red darkred
    light : black black
  */
@@ -275,15 +276,37 @@ th {
 
 
 .mlabel {
-    margin: 3% 0 0 0;
-    font-size: 120%;
+    margin: 0.5% 0 0 0;
+    /* font-size: 120%; */
+    display: inline-block;
 
 }
 
-input[value="Créer un Quizz"] {
-    margin-top: 2%;
+input[value="Créer un Quizz"], input[name="NomQUizz"] {
+    margin: 0.5% 1% 0 1%;
+    padding: 0.3%;
+    display: inline-block;
 }
 
 select[name="T2Quizz"], select[name="Catégorie2"] {
-    width: 30%;
+    width: auto;
+    border: 1px solid black;
+    display: inline-block;
+    padding: 0.5%;
+    margin: 0.5% 1% 0 1%;
+}
+
+.l-quizz {
+    font-size: 120%;
+    text-align: center;
+    margin: 1% 0 0 0;
+}
+
+.create-quizz {
+    display: flex;
+}
+
+.mkquizz {
+    font-size: 120%;
+    margin: 2% 0 0.5% 0;
 }

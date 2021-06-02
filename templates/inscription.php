@@ -25,7 +25,7 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php") {
             <label for="login"> Nom d'utilisateur : </label><br/>
             <input type="text" id="login2" name="login2"/><br/><br/>
             <label for="passe">Mot de passe : </label><br/>
-            <input type="text" id="passe2" name="passe2"/><br/><br/>
+            <input type="password" id="passe2" name="passe2"/><br/><br/>
             <label for="pseudo">Pseudo : </label><br/>
             <input type="text" id="pseudo2" name="pseudo2"/><br/><br/>
             <input type="submit" name="action" value="Inscription"/>

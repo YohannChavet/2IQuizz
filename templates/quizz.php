@@ -57,17 +57,17 @@ if($auteur===$_SESSION["idUser"]){
     }
 else{
     mkForm('controleur.php','GET');
-    ?><p class="label">Indiquez le numéro de la question : </p><?php
+    ?><p class="mkquizz">Indiquez le numéro de la question : </p><?php
     mkInput('number','NQues','');
-    ?><p class="label">Indiquez la question : </p><?php
+    ?><p class="mkquizz">Indiquez la question : </p><?php
     mkInput('text','Question','');
-    ?><p class="label">Indiquez la réponse: </p><?php
+    ?><p class="mkquizz">Indiquez la réponse: </p><?php
     mkInput('text','Reponse','');
-    ?><p class="label">Indiquez le choix 1 : </p><?php
+    ?><p class="mkquizz">Indiquez le choix 1 : </p><?php
     mkInput('text','CHOIX1','');
-    ?><p class="label">Indiquez le choix 2 : </p><?php
+    ?><p class="mkquizz">Indiquez le choix 2 : </p><?php
     mkInput('text','CHOIX2','');
-    ?><p class="label">Indiquez le choix 3 : </p><?php
+    ?><p class="mkquizz">Indiquez le choix 3 : </p><?php
     mkInput('text','CHOIX3','');
     mkInput('submit','action','Créer une question');
     mkInput('submit','action','Modifier une question');
