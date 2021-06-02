@@ -1,20 +1,14 @@
-@font-face {
-    font-family: "Komika Display";
-    src: url("/ressources/komika-display.regular.ttf") format("ttf");
-}
-
-/* red : #f99 #9f3f3f red darkred
-   light : white black
- */
 body {
-    font-family: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Lucida Console", monospace;
+    font-family: "Segoe UI Emoji", "Lucida Sans Unicode", monospace;
     padding: 0;
     margin: 0;
     justify-content: center;
     align-items: center;
     background-color: #3b4866;
 }
-
+/* red : #f99 #9f3f3f red darkred
+   light : white black
+ */
 .header {
     font-size: 120%;
     background-color: #424b96;
@@ -166,7 +160,6 @@ body {
 }
 
 .title {
-    font-family: "Komika Display";
     font-size: 700%;
     text-shadow: 10px 10px 5px black;
     color: darkcyan;
@@ -217,70 +210,20 @@ select {
 }
 
 input {
+    display: block;
     border: 1px solid black;
     border-radius: 10px;
     font-size: 120%;
     padding: 5px;
+    margin: 0 auto;
 }
 
 input#remember {
     width: 20px;
     height: 20px;
+    display: inline-block;
+    vertical-align: sub;
 }
-
-/*input[type=checkbox]:checked + label {
-    color: #0f0;
-}*/
-
-video.bgvid {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: -100; /* send the video at the background */
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translateX(-7%) translateY(9%) scale(1.1);
-    /*display: inline-block;
-    vertical-align: baseline
-    transform: translateX(-50%) translateY(-50%);
-    bottom: -20%;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -webkit-background-size: cover;
-    background-size: cover*/
-}
-
-.layer {
-    background-color: #0000003f;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: -99; /* send the video at the background */
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-}
-
-/*
-svg {
-    width: 2.2%;
-    vertical-align: middle;
-    float: left;
-    padding-left: 0.5%;
-} */
 
 .svg-theme {
     float: left;
@@ -319,21 +262,15 @@ table {
     position: relative;
     margin-top: 0.5%;
     margin-left: 0.5%;
-    background-color: #2c364d;
+    border-spacing: 5px;
+    border-collapse: separate;
+    /* background-color: #2c364d; */
 }
 
 th {
-    border-left: 2px solid white;
-    padding: 1%;
-    border-bottom: 2px solid white;
-}
-
-.row1 {
-    border-top: 2px solid white;
-}
-
-#last-col {
-    border-right: 2px solid white;
+    border-spacing: 5px;
+    padding: 0.5%;
+    background-color: #2c364d;
 }
 
 .table-a {
@@ -352,8 +289,6 @@ th {
 
 input[value="Créer un Quizz"] {
     margin-top: 2%;
-    /* color: white;
-    background-color: #2c36fd; */
 }
 
 select[name="T2Quizz"], select[name="Catégorie2"] {

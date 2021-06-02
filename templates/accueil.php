@@ -12,10 +12,6 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php")
         text-decoration: underline;
     }
 </style>
-<video playsinline="" muted="" loop="" aria-describedby="video-description-2585" class="bgvid"
-       poster="./ressources/bg.png" style="width: auto;" controls autoplay>
-    <source src="./ressources/bg.mp4" type="video/mp4">
-</video>
 <div class="layer"></div>
 <div class="title-div">
     <h1 class="title">2IQuizz</h1>
