@@ -60,7 +60,7 @@ switch ($action) {
             echo "<tr>";
             echo "<th class=\"scope\"   ><a class='table-a' href=index.php?view=quizz&IDQuizz=";
             echo $ligne['IDQuizz'];
-            echo ">";
+            echo "&message= ''>";
             echo $ligne['Nom_Quizz'];
             echo "</a></th>";
             echo "<th>";

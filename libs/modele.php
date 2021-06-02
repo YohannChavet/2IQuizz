@@ -331,4 +331,21 @@ function SupprimerQCM($IDQuizz,$NQues){
 			  WHERE ID_Quizz='$IDQuizz' and N_Question='$NQues'";
 return SQLDELETE($requête);
 }
+
+function QuestionexisteVF($NQuestion,$Quizz){
+	$requete="SELECT ID
+			  FROM vrai_faux
+			  WHERE ID_Quizz='$Quizz' and N_Question='$NQuestion'";
+return SQLGetChamp($requete);
+}
+
+function QuestionexisteQCM($NQuestion,$Quizz,$type){
+	if($type==='QCM'){
+		$requete="SELECT ID
+				  FROM vrai_faux
+				  WHERE ID_Quizz='$Quizz' and N_Question='$NQuestion'";
+	return SQLGetChamp($requete);
+	}
+	return 0;
+}
 ?>

@@ -11,14 +11,14 @@ if (basename($_SERVER["PHP_SELF"]) == "quizz.php")
 include "libs/modele.php";
 include "libs/maLibSecurisation.php";
 include "libs/maLibForms.php";
-
+echo $_GET['message'];
 $idQuizz=$_GET['IDQuizz'];
 $auteur = AuteurQuizz($_GET['IDQuizz']);
 if($auteur===$_SESSION["idUser"]){
     if(IsVRaiFaux($_GET['IDQuizz'])===1){
         mkForm('controleur.php','GET');
         ?><p class="label">Indiquez le numéro de la question : </p><?php
-        mkInput('number','NQues','');
+        mkInput('number','NQues',0);
         ?><p class="label">Indiquez la question : </p><?php
         mkInput('text','Question','');
 ?>

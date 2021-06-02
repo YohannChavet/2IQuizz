@@ -72,69 +72,75 @@ session_start();
       $qs = "view=mes_quizz";
       break;
 
-
-
-
-
-
-
-      case 'Créer une question':
-      if($type=valider("type"));
-      if($Question=valider("Question"));
-      if($NQues=valider("NQues"));
-      $IDQuizz=$_GET['IDQuizz'];
-
-      if($type==='VraiFaux'){
-        if($VraiFaux=valider("VraiFaux"));
-        ajouterquestionVF($IDQuizz,$NQues,$Question,$VraiFaux);
-      }
-      else{
-        if($Reponse=valider("Reponse"));
-        if($CHOIX1=valider("CHOIX1"));
-        if($CHOIX2=valider("CHOIX2"));
-        if($CHOIX3=valider("CHOIX3"));
-        ajouterquestionQCM($IDQuizz,$NQues,$Question,$Reponse,$CHOIX1,$CHOIX2,$CHOIX3);
-      }
-      $qs = "view=quizz&IDQuizz=$IDQuizz";
-      break;
-
-
-
-
-
-      case 'Modifier une question' :
+      case 'Supprimer la question' :
         if($type=valider("type"));
-        if($Question=valider("Question"));
         if($NQues=valider("NQues"));
         $IDQuizz=$_GET['IDQuizz'];
-  
-        if($type==='VraiFaux'){
-          if($VraiFaux=valider("VraiFaux"));
-          modifierquestionVF($IDQuizz,$NQues,$Question,$VraiFaux);
-        }
-        else{
-          if($Reponse=valider("Reponse"));
-          if($CHOIX1=valider("CHOIX1"));
-          if($CHOIX2=valider("CHOIX2"));
-          if($CHOIX3=valider("CHOIX3"));
-          modifierquestionQCM($IDQuizz,$NQues,$Question,$Reponse,$CHOIX1,$CHOIX2,$CHOIX3);
-        }
-        $qs = "view=quizz&IDQuizz=$IDQuizz";
-        break;
 
-        case 'Supprimer la question' :
+         if(QuestionexisteQCM($NQues,$IDQuizz,$type)!=0){
+          SupprimerQCM($IDQuizz,$NQues);
+           $message='';
+        }
+        elseif(QuestionexisteVF($NQues,$IDQuizz)!=0){
+          SupprimerVF($IDQuizz,$NQues);
+          $message='';
+          }
+        else{
+         $message='Sélectionnez une question existante';
+         }
+         $qs = "view=quizz&IDQuizz=$IDQuizz&message=$message";
+         break;
+
+      case 'Modifier une question' :
+         if($type=valider("type"));
+         if($Question=valider("Question"));
+         if($NQues=valider("NQues"));
+         $IDQuizz=$_GET['IDQuizz'];
+  
+        if(QuestionexisteQCM($NQues,$IDQuizz,$type)!=0){
+          if($Reponse=valider("Reponse"));
+           if($CHOIX1=valider("CHOIX1"));
+           if($CHOIX2=valider("CHOIX2"));
+           if($CHOIX3=valider("CHOIX3"));
+           modifierquestionQCM($IDQuizz,$NQues,$Question,$Reponse,$CHOIX1,$CHOIX2,$CHOIX3);
+           $message='';
+        }
+         elseif(QuestionexisteVF($NQues,$IDQuizz)!=0){
+          if($VraiFaux=valider('VraiFaux'));
+           modifierquestionVF($IDQuizz,$NQues,$Question,$VraiFaux);
+           $message='';
+          }
+         else{
+        $message='Sélectionnez une question existante';
+        }
+        $qs = "view=quizz&IDQuizz=$IDQuizz&message=$message";
+        break;        
+
+        
+         case 'Créer une question' :
           if($type=valider("type"));
+          if($Question=valider("Question"));
           if($NQues=valider("NQues"));
           $IDQuizz=$_GET['IDQuizz'];
-    
-          if($type==='VraiFaux'){
-            SupprimerVF($IDQuizz,$NQues);
-          }
+  
+           if(QuestionexisteQCM($NQues,$IDQuizz,$type)===false){
+            if($Reponse=valider("Reponse"));
+             if($CHOIX1=valider("CHOIX1"));
+             if($CHOIX2=valider("CHOIX2"));
+             if($CHOIX3=valider("CHOIX3"));
+             ajouterquestionQCM($IDQuizz,$NQues,$Question,$Reponse,$CHOIX1,$CHOIX2,$CHOIX3);
+             $message='';
+           }
+           elseif(QuestionexisteVF($NQues,$IDQuizz)===false){
+            $VraiFaux=$_GET['VraiFaux'];
+            ajouterquestionVF($IDQuizz,$NQues,$Question,$VraiFaux);
+            $message='';
+           }
           else{
-            SupprimerQCM($IDQuizz,$NQues);
+          $message='Le numéro de question existe déjà';
           }
-          $qs = "view=quizz&IDQuizz=$IDQuizz";
-          break;
+          $qs = "view=quizz&IDQuizz=$IDQuizz&message=$message";
+          break;        
     }
     
   }
