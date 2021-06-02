@@ -1,10 +1,11 @@
 <?php
 session_start();
 
-  include_once "libs/maLibUtils.php";
-  include_once "libs/maLibSQL.pdo.php";
-  include_once "libs/maLibSecurisation.php"; 
-  include_once "libs/modele.php"; 
+include_once "libs/maLibForms.php";
+include_once "libs/maLibUtils.php";
+include_once "libs/maLibSQL.pdo.php";
+include_once "libs/maLibSecurisation.php"; 
+include_once "libs/modele.php"; 
 
   $qs = $_GET;
   if ($action = valider("action"))
@@ -47,7 +48,7 @@ session_start();
               setcookie("remember",false, time()-3600);
             }
           } else {
-            $qs["feedback"] = "Identifiant ou mot de passe invalide";
+            $qs= "view=login&message=Identifiant ou mot de passe invalide";
           }
         }
       break;
@@ -56,7 +57,7 @@ session_start();
         if($login2=valider("login2"));
         if($pseudo2=valider("pseudo2"));
         if($passe2=valider("passe2"));
-        CréerUtilisateur($pseudo2,$login2,$passe2);
+        CréerUtilisateur($login2,$pseudo2,$passe2);
         break;
 
       case 'Logout' :
@@ -116,7 +117,7 @@ session_start();
         $qs = "view=quizz&IDQuizz=$IDQuizz&message=$message";
         break;        
 
-        
+
          case 'Créer une question' :
           if($type=valider("type"));
           if($Question=valider("Question"));

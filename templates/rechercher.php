@@ -7,9 +7,7 @@ if (basename($_SERVER["PHP_SELF"]) == "rechercher.php") {
     die("");
 }
 
-include "libs/modele.php";
-include "libs/maLibSecurisation.php";
-include "libs/maLibForms.php";
+
 
 $catégorie = listertable('catégorie');
 $quizz = listerquizz();

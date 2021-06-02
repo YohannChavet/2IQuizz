@@ -8,9 +8,7 @@ if (basename($_SERVER["PHP_SELF"]) == "quizz.php")
 	die("");
 }
 
-include "libs/modele.php";
-include "libs/maLibSecurisation.php";
-include "libs/maLibForms.php";
+
 echo $_GET['message'];
 $idQuizz=$_GET['IDQuizz'];
 $auteur = AuteurQuizz($_GET['IDQuizz']);
@@ -114,11 +112,12 @@ else{
 else{
 
 
-    if(IsVRaiFaux($_GET['IDQuizz'])===1){
+    if(IsVRaiFaux($_GET['IDQuizz'])==1){
     $quizz=listerquestionVF($_GET['IDQuizz']); 
     var_dump($quizz);
     }
     else{
+        
     $quizz=listerquestionQCM($_GET['IDQuizz']); 
     foreach($quizz as $ligne){
         $table=tabale();
@@ -132,10 +131,10 @@ else{
             'CHOIX3' => $ligne['CHOIX3'],
             'PosC3' => $table[3]
         );
-
     }
-    afficherquestion($quizz,$table);
-    var_dump($quizz);
+    mkForm('controleur.php', 'GET');
+    afficherquestionQCM($quizz,$asso);
+    mkInput("submit","action","valider");
     }
 }
 

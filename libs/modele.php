@@ -31,7 +31,7 @@ function verifUserBdd($login,$passe)
 {
 
 
-	$SQL="SELECT ID FROM utilisateurs WHERE username='$login' AND mdp='$passe'";
+	$SQL="SELECT ID FROM utilisateurs WHERE username=BINARY '$login' AND mdp=BINARY '$passe'";
 
 	return SQLGetChamp($SQL);
 
@@ -369,16 +369,58 @@ return $tab_result;
 
 
 
-function afficherquestion($quizz,$table){
+function afficherquestionQCM($quizz,$table){
+$i=0;
+$q=0;
 foreach($quizz as $ligne){
 	echo "<div class=\"NQuest\">";
-	echo "Question n° :";
+	echo "Question n° : ";
 	echo $ligne['N_Question'];
 	echo "</div>";
 	echo "<div class=\"Quest\">";
-	echo "Question :";
+	echo "Question : ";
 	echo $ligne['Question'];
 	echo "</div>";
+	$i = 0;
+	for($i;$i<=4;$i++){
+		foreach($table as $key => $value){
+			if($i===$value){
+			if($key=='PosR'){
+				echo "<p>";
+				echo $quizz[$q]['Reponse'];
+				echo "</p>";
+				mkRadioCb("radio",$ligne['N_Question'],"Reponse");
+			}
+			elseif($key=='PosC1'){
+				echo "<p>";
+				echo $quizz[$q]['CHOIX1'];
+				echo "</p>";
+				mkRadioCb("radio",$ligne['N_Question'],"CHOIX1");
+			}
+			elseif($key=='PosC2'){
+				echo "<p>";
+				echo $quizz[$q]['CHOIX2'];
+				echo "</p>";
+				mkRadioCb("radio",$ligne['N_Question'],"CHOIX2");
+			}
+			else{
+				echo "<p>";
+				echo $quizz[$q]['CHOIX3'];
+				echo "</p>";
+				mkRadioCb("radio",$ligne['N_Question'],"CHOIX3");
+			}
+			}
+		}
+		
+
+	}
+	$q=$q +1;
 }
+}
+
+
+function message($message=" "){
+	$aux = $message;
+	echo $aux;
 }
 ?>

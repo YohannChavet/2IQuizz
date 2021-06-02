@@ -1,7 +1,11 @@
 <?php
+include_once "libs/maLibForms.php";
+include_once "libs/maLibUtils.php";
+include_once "libs/maLibSQL.pdo.php";
+include_once "libs/maLibSecurisation.php"; 
+include_once "libs/modele.php"; 
 session_start();
 
-	include_once "libs/maLibUtils.php";
 
 	$view = valider("view"); 
 

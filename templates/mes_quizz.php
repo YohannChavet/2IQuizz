@@ -7,9 +7,6 @@ if (basename($_SERVER["PHP_SELF"]) == "mes_quizz.php") {
     die("");
 }
 
-include "libs/modele.php";
-include "libs/maLibSecurisation.php";
-include "libs/maLibForms.php";
 
 $catégorie = listertable('catégorie');
 $quizz = listerQuizzC($_SESSION["idUser"]);
