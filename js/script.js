@@ -8,7 +8,7 @@ if (match) {
 
 function theme(color) {
     const sheets = [...document.getElementsByTagName('link')];
-
+    /* removes all linked stylesheets */
     sheets.forEach(x => {
         const type = x.getAttribute('type');
         !!type && type.toLowerCase() === 'text/css'

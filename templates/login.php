@@ -16,6 +16,7 @@ if ($checked = valider("remember", "COOKIE")) $checked = "checked";
 <style>
     .connexion-a {
         text-decoration: underline;
+    }
 </style>
 <div id="corps">
     <h1 class="title">2IQuizz</h1>

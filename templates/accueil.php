@@ -10,6 +10,7 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php")
 <style>
     .accueil-a {
         text-decoration: underline;
+    }
 </style>
 <video playsinline="" muted="" loop="" aria-describedby="video-description-2585" class="bgvid"
        poster="./ressources/bg.png" style="width: auto;" controls autoplay>

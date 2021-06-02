@@ -14,6 +14,7 @@ include_once "libs/modele.php";
 <style>
     .profil-a {
         text-decoration: underline;
+    }
 </style>
 <div class="flex">
     <div class="left">
