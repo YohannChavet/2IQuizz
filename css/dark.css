@@ -95,8 +95,11 @@ body {
     display: flex;
     flex-direction: row;
     /*overflow:hidden;*/
-    -webkit-animation: right 5s cubic-bezier(0.175, 0.885, 0.320, 1.275) infinite alternate both;
-    animation: right 5s cubic-bezier(0.175, 0.885, 0.320, 1.275) infinite alternate both;
+}
+
+.spikes {
+    -webkit-animation: spikes 5s cubic-bezier(0.175, 0.885, 0.320, 1.275) infinite alternate both;
+    animation: spikes 5s cubic-bezier(0.175, 0.885, 0.320, 1.275) infinite alternate both;
 }
 
 /**
@@ -104,7 +107,7 @@ body {
  * animation scale-up-horizontal-right
  * ----------------------------------------
  */
-@-webkit-keyframes right {
+@-webkit-keyframes spikes {
     0% {
         -webkit-transform: scaleX(1);
         transform: scaleX(1);
@@ -118,14 +121,14 @@ body {
         transform-origin: 100% 100%;
     }
     100% {
-        -webkit-transform: scaleX(1.1);
-        transform: scaleX(1.1);
+        -webkit-transform: scaleX(1.3);
+        transform: scaleX(1.3);
         -webkit-transform-origin: 100% 100%;
         transform-origin: 100% 100%;
     }
 }
 
-@keyframes right {
+@keyframes spikes {
     0% {
         -webkit-transform: scaleX(1);
         transform: scaleX(1);
@@ -139,8 +142,8 @@ body {
         transform-origin: 100% 100%;
     }
     100% {
-        -webkit-transform: scaleX(1.1);
-        transform: scaleX(1.1);
+        -webkit-transform: scaleX(1.3);
+        transform: scaleX(1.3);
         -webkit-transform-origin: 100% 100%;
         transform-origin: 100% 100%;
     }
@@ -162,6 +165,7 @@ body {
 
 .title {
     font-size: 700%;
+    /* text-shadow: 10px 10px 5px black; */
     text-shadow: 5px 5px 2px black;
     color: darkcyan;
     -webkit-text-stroke: 2px black;
@@ -316,4 +320,56 @@ select[name="T2Quizz"], select[name="Catégorie2"] {
 .mkquizz {
     font-size: 120%;
     margin: 2% 0 0.5% 0;
+}
+
+input[value="Créer une question"] {
+    margin-top: 9%;
+    margin-bottom: 1%;
+}
+
+input[value="Supprimer la question"], input[value="Modifier une question"], input[value="Créer une question"] {
+    display: inline-block;
+    font-size: 100%;
+}
+
+.grow-wrap {
+    /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
+    display: grid;
+}
+
+.grow-wrap::after {
+    /* Note the weird space! Needed to preventy jumpy behavior */
+    content: attr(data-replicated-value) " ";
+
+    /* This is how textarea text behaves */
+    white-space: pre-wrap;
+
+    /* Hidden from view, clicks, and screen readers */
+    visibility: hidden;
+}
+
+.grow-wrap > textarea {
+    /* You could leave this, but after a user resizes, then it ruins the auto sizing */
+    resize: none;
+
+    /* Firefox shows scrollbar on growth, you can hide like this. */
+    overflow: hidden;
+}
+
+.grow-wrap > textarea,
+.grow-wrap::after {
+    /* Identical styling required!! */
+    width: 70%;
+    border: 1px solid black;
+    padding: 0.5rem;
+    font: inherit;
+    margin: 0 auto;
+    border-radius: 7px;
+    overflow-y: scroll;
+    /* Place on top of each other */
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.xdebug-error.xe-notice td {
+    color: black;
 }
