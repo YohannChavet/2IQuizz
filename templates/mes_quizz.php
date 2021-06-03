@@ -54,7 +54,7 @@ switch ($action) {
                 ?><p class="mlabel">Type de Quizz : </p><?php
             mkSelect("T2Quizz", $type, "Type", "Type");
             mkInput("submit", "action", "Créer un Quizz");
-            echo "<hr><p class='l-quizz'>Liste de Mes Quizz:</p><table>";
+            echo "<hr><p class='l-quizz'>Liste de Mes Quizz:</p><div class='table-div'> <table>";
             echo "<tr>
       <th scope=\"col\">Nom</th>
       <th scope=\"col\">Catégorie</th>
@@ -83,7 +83,7 @@ switch ($action) {
                 echo "</th>";
                 echo "</tr>";
             }
-            echo "</table>";
+            echo "</table></div>";
 
             echo "</a>"; ?>
         </div>
