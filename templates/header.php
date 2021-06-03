@@ -18,7 +18,7 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\" ?>";
     <title>2iQuizz</title>
     <link rel="icon" type="image/png" href="./ressources/2i.png"/>
     <script src="js/script.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="./css/dark.css">
+    <noscript><link rel="stylesheet" type="text/css" href="./css/dark.css"></noscript>
 </head>
 <!-- **** F I N **** H E A D **** -->
 
