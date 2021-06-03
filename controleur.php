@@ -48,9 +48,11 @@ include_once "libs/modele.php";
               setcookie("remember",false, time()-3600);
             }
           } else {
-            $qs= "view=login&message=Identifiant ou mot de passe invalide";
-          }
+            
+
         }
+      }
+      $qs= "view=login&message=Identifiant ou mot de passe invalide";
       break;
 
       case 'Inscription' :
@@ -62,7 +64,7 @@ include_once "libs/modele.php";
           $qs = "view=login";
         }
         else {
-          $qs = "view=inscription";
+          $qs = "view=inscription&message=Pseudo,Identifiant ou mot de passe invalide";
         }
         break;
 
