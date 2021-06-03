@@ -20,6 +20,7 @@ $type = listertable('type_quizz');
         text-decoration: underline;
     }
 </style>
+
 <div class="flex">
     <div class="left">
         <?php
@@ -48,7 +49,6 @@ $type = listertable('type_quizz');
                 $quizz = listerquizz();
                 break;
         }
-
         echo "<table>";
         echo "<tr>
       <th class=\"row1\" scope=\"col\">Nom</th>
@@ -59,11 +59,18 @@ $type = listertable('type_quizz');
       </tr>";
         foreach ($quizz as $ligne) {
             echo "<tr>";
-            echo "<th class=\"scope\"   ><a class='table-a' href=index.php?view=quizz&IDQuizz=";
-            echo $ligne['IDQuizz'];
-            echo "&message= ''>";
-            echo $ligne['Nom_Quizz'];
-            echo "</a></th>";
+            if(empty($_SESSION["idUser"])){
+                echo "<th>";
+                echo $ligne['Nom_Quizz'];
+                echo "</th>";
+            }
+            else{
+             echo "<th class=\"scope\"   ><a class='table-a' href=index.php?view=quizz&IDQuizz=";
+             echo $ligne['IDQuizz'];
+             echo "&message= ''>";
+             echo $ligne['Nom_Quizz'];
+             echo "</a></th>";
+            }
             echo "<th>";
             echo $ligne['Catégorie'];
             echo "</th>";
