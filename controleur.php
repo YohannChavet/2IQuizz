@@ -57,8 +57,13 @@ include_once "libs/modele.php";
         if($login2=valider("login2"));
         if($pseudo2=valider("pseudo2"));
         if($passe2=valider("passe2"));
-        CréerUtilisateur($login2,$pseudo2,$passe2);
-        $qs = "view=login";
+        if($passe2!='' && $pseudo2!='' && $login2!=''){
+          CréerUtilisateur($login2,$pseudo2,$passe2);
+          $qs = "view=login";
+        }
+        else {
+          $qs = "view=inscription";
+        }
         break;
 
       case 'Logout' :
