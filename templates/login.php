@@ -8,7 +8,14 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php") {
 $login = valider("login", "COOKIE");
 $passe = valider("passe", "COOKIE");
 if ($checked = valider("remember", "COOKIE")) $checked = "checked";
-//message($_GET['message']); Pas fonctionnel
+
+if ($message = valider('message')) {
+    echo "<p class='message'>";
+    echo $message;
+    echo "</p>";
+}
+
+
 ?>
 
 <style>
@@ -19,10 +26,6 @@ if ($checked = valider("remember", "COOKIE")) $checked = "checked";
 <div id="corps">
     <h1 class="title">2IQuizz</h1>
     <h2 class="title-h2">Connexion</h2>
-    <?php if($message=valider('message')){
-        echo $message;
-    }
-    ?>
     <div class="Form">
         <form action="controleur.php" method="GET">
             <label for="login"> Nom d'utilisateur : </label><br/>

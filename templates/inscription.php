@@ -7,8 +7,11 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php") {
 }
 
 // Chargement eventuel des données en cookies
-
-
+if ($message = valider('message')) {
+    echo "<p class='message'>";
+    echo $message;
+    echo "</p>";
+}
 ?>
 
 <style>
@@ -19,10 +22,7 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php") {
 <div id="corps">
     <h1 class="title">2IQuizz</h1>
     <h2 class="title-h2">Inscription</h2>
-    <?php if($message=valider('message')){
-        echo $message;
-    }
-    ?>
+
     <div class="Form">
         <form action="controleur.php" method="GET">
             <label for="login"> Nom d'utilisateur : </label><br/>
