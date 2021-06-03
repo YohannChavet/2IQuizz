@@ -28,9 +28,9 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php")
         </div>
         <div class="right-box"><p class="rtitle-p">Mon Profil</p>
         <?php 
-       if((isset($message))==true){
-       echo $message;
-   }
+       if($message=valider('message')){
+        echo $message;
+       }
          mkForm('controleur.php', 'GET');
          mkInput('Text','PseudoQ','');
          mkInput("submit","action","Changer de Pseudo");
