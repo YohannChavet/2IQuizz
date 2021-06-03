@@ -42,7 +42,8 @@ include_once "libs/modele.php";
               setcookie("login",$login , time()+60*60*24*30);
               setcookie("passe",$password, time()+60*60*24*30);
               setcookie("remember",true, time()+60*60*24*30);
-            } else {
+            } 
+            else {
               setcookie("login","", time()-3600);
               setcookie("passe","", time()-3600);
               setcookie("remember",false, time()-3600);
@@ -51,8 +52,9 @@ include_once "libs/modele.php";
             
 
         }
+
       }
-      $qs= "view=login&message=Identifiant ou mot de passe invalide";
+
       break;
 
       case 'Inscription' :

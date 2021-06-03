@@ -19,7 +19,9 @@ mkForm('controleur.php','GET');
    <div class="left">
        <?php
        echo "<p class='message'>";
-       echo $_GET['message'];
+       if($message=valider('message')){
+           echo $message;
+       }
        echo "</p>";
        $quizz = listerquestionVF($_GET['IDQuizz']);
        echo "<table>";
@@ -87,7 +89,10 @@ mkForm('controleur.php','GET');
     <div class="left">
     <?php
     echo "<p class='message'>";
-    echo $_GET['message'];
+    if($message=valider('message')){
+        
+        echo $message;
+    }
     echo "</p>";
     $quizz = listerquestionQCM($_GET['IDQuizz']);
     echo "<table>";
@@ -157,7 +162,10 @@ mkForm('controleur.php','GET');
 <?php
 } else { // le quizz n'appartient pas à l'utilisateur, il ne peut donc pas le modifier
     echo "<p class='message'>";
-    echo $_GET['message'];
+    if($message=valider('message')){
+        
+        echo $message;
+    }
     echo "</p>";
 
     if (IsVRaiFaux($_GET['IDQuizz']) == 1) {

@@ -31,7 +31,7 @@ function verifUserBdd($login,$passe)
 {
 
 
-	$SQL="SELECT ID FROM utilisateurs WHERE username=BINARY '$login' AND mdp=BINARY '$passe'";
+	$SQL="SELECT ID FROM utilisateurs WHERE username='$login' AND mdp='$passe'";
 
 	return SQLGetChamp($SQL);
 
