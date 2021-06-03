@@ -89,11 +89,11 @@ include_once "libs/modele.php";
         if($NQues=valider("NQues"));
         $IDQuizz=$_GET['IDQuizz'];
 
-         if(QuestionexisteQCM($NQues,$IDQuizz,$type)!=0){
+         if(QuestionexisteQCM($NQues,$IDQuizz,$type)!==0){
           SupprimerQCM($IDQuizz,$NQues);
            $message='';
         }
-        elseif(QuestionexisteVF($NQues,$IDQuizz)!=0){
+        elseif(QuestionexisteVF($NQues,$IDQuizz)!==0){
           SupprimerVF($IDQuizz,$NQues);
           $message='';
           }
@@ -109,7 +109,7 @@ include_once "libs/modele.php";
          if($NQues=valider("NQues"));
          $IDQuizz=$_GET['IDQuizz'];
   
-        if(QuestionexisteQCM($NQues,$IDQuizz,$type)!=0){
+        if(QuestionexisteQCM($NQues,$IDQuizz,$type)!==0){
           if($Reponse=valider("Reponse"));
            if($CHOIX1=valider("CHOIX1"));
            if($CHOIX2=valider("CHOIX2"));
@@ -117,7 +117,7 @@ include_once "libs/modele.php";
            modifierquestionQCM($IDQuizz,$NQues,$Question,$Reponse,$CHOIX1,$CHOIX2,$CHOIX3);
            $message='';
         }
-         elseif(QuestionexisteVF($NQues,$IDQuizz)!=0){
+         elseif(QuestionexisteVF($NQues,$IDQuizz)!==0){
           if($VraiFaux=valider('VraiFaux'));
            modifierquestionVF($IDQuizz,$NQues,$Question,$VraiFaux);
            $message='';
@@ -152,8 +152,21 @@ include_once "libs/modele.php";
           $message='Le numéro de question existe déjà';
           }
           $qs = "view=quizz&IDQuizz=$IDQuizz&message=$message";
-          break;        
+          break; 
+          
+          case 'Changer de Pseudo' : 
+            if($PseudoQ=valider("PseudoQ"));
+            $idUser = $_SESSION['idUser'];
+            if(!empty($PseudoQ)){
+            changerPseudo($idUser,$PseudoQ);
+            }    
+            else{
+              $message= "Pseudo invalide";
+              $qs = "view=profil&message=$message";
+            }
+            break;
     }
+
     
   }
 

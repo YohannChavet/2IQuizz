@@ -13,6 +13,7 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php")
         text-decoration: underline;
     }
 </style>
+
 <div class="flex">
     <div class="left">
     </div>
@@ -25,7 +26,17 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php")
             }
             ?>
         </div>
-        <div class="right-box"><p class="rtitle-p">Mon Profil</p><?php echo Pseudo($_SESSION["idUser"]);?></div>
+        <div class="right-box"><p class="rtitle-p">Mon Profil</p>
+        <?php 
+       if((isset($message))==true){
+       echo $message;
+   }
+         mkForm('controleur.php', 'GET');
+         mkInput('Text','PseudoQ','');
+         mkInput("submit","action","Changer de Pseudo");
+        endForm();
+        ?>
+        </div>
     </div>
 </div>
 </body>
