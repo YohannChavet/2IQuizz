@@ -70,8 +70,13 @@ include_once "libs/modele.php";
       if($NomQUizz=valider("NomQUizz"));
       if($Catégorie2=valider("Catégorie2"));
       if($T2Quizz=valider("T2Quizz"));
+      if($NomQUizz!=''){
       CréerQuizz($NomQUizz,$Catégorie2,$T2Quizz,$_SESSION["idUser"]);
       $qs = "view=mes_quizz";
+      }
+      else{
+        $qs = "view=mes_quizz";
+      }
       break;
 
       case 'Supprimer la question' :
