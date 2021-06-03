@@ -114,11 +114,19 @@ else{
 
     if(IsVRaiFaux($_GET['IDQuizz'])==1){
     $quizz=listerquestionVF($_GET['IDQuizz']); 
-    var_dump($quizz);
+    if (empty($quizz)==0){
+        mkForm('controleur.php', 'GET');
+        afficherquestionVF($quizz);
+        mkInput("submit","action","valider");
+        }
+        else{
+            echo"Quizz vide, sélectionnez un autre quizz";
+    
+        }
     }
     else{
-        
     $quizz=listerquestionQCM($_GET['IDQuizz']); 
+    if (empty($quizz)==0){
     foreach($quizz as $ligne){
         $table=tabale();
         $asso=array(
@@ -136,6 +144,11 @@ else{
     afficherquestionQCM($quizz,$asso);
     mkInput("submit","action","valider");
     }
+    else{
+        echo"Quizz vide, sélectionnez un autre quizz";
+
+    }
+}
 }
 
 ?>

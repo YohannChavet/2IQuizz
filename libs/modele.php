@@ -423,4 +423,24 @@ function message($message=" "){
 	$aux = $message;
 	echo $aux;
 }
+
+
+function afficherquestionVF($quizz){
+	$i=0;
+	$q=0;
+	foreach($quizz as $ligne){
+		echo "<div class=\"NQuest\">";
+		echo "Question n° : ";
+		echo $ligne['N_Question'];
+		echo "</div>";
+		echo "<div class=\"Quest\">";
+		echo "Question : ";
+		echo $ligne['Question'];
+		echo "</div>";
+		echo "Vrai";
+		mkRadioCb("radio",$ligne['N_Question'],"Vrai");
+		echo "Faux";
+		mkRadioCb("radio",$ligne['N_Question'],"Faux");
+	}
+	}
 ?>
