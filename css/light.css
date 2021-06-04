@@ -367,3 +367,79 @@ input[value="Supprimer la question"], input[value="Modifier une question"], inpu
     /* Place on top of each other */
     grid-area: 1 / 1 / 2 / 2;
 }
+
+.NQuest {
+    font-size: 150%;
+    text-decoration: underline;
+}
+
+.Quest {
+    font-size: 120%;
+    margin: 2% 0 2% 0;
+}
+
+input[value="valider"] {
+    font-size: 120%;
+    margin-top: 1.5%;
+    padding: 0.5% 1% 0.5% 1%;
+}
+
+.wrapper {
+    place-items: center;
+    display: inline-flex;
+    /* background: blue; */
+    height: 60px;
+    width: 400px;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    padding: 10px 15px;
+    box-shadow: 5px 5px 30px rgb(0 0 0 / 20%);
+    margin-bottom: 5%;
+}
+
+.wrapper .option {
+    background: #fff;
+    height: 70%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 10px;
+    border: 2px solid lightgrey;
+    transition: all 0.3s ease;
+}
+
+.wrapper .option .dot {
+    height: 20px;
+    width: 20px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    position: relative;
+}
+
+.wrapper .option .dot::before {
+    position: absolute;
+    content: "";
+    top: 4px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    background: #0069d9;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1.5);
+    transition: all 0.3s ease;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.wrapper .option span {
+    font-size: 20px;
+    color: #808080;
+}

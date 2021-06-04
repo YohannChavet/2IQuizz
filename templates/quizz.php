@@ -166,7 +166,6 @@ mkForm('controleur.php','GET');
         
         echo $message;
     }
-    echo "</p>";
 
     if (IsVRaiFaux($_GET['IDQuizz']) == 1) {
         $quizz = listerquestionVF($_GET['IDQuizz']);
@@ -202,6 +201,7 @@ mkForm('controleur.php','GET');
 
         }
     }
+    echo '</p>';
 }
 
 ?>
