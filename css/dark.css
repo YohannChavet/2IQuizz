@@ -402,7 +402,7 @@ input[value="valider"] {
     display: inline-flex;
     /* background: blue; */
     height: 60px;
-    width: 400px;
+    min-width: 400px;
     align-items: center;
     justify-content: space-evenly;
     border-radius: 5px;

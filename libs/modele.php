@@ -382,6 +382,7 @@ function afficherquestionQCM($quizz, $table)
 {
     $i = 0;
     $q = 0;
+    $j = 0;
     foreach ($quizz as $ligne) {
         echo "<div class=\"NQuest\">";
         echo "Question n° : ";
@@ -392,36 +393,66 @@ function afficherquestionQCM($quizz, $table)
         echo $ligne['Question'];
         echo "</div>";
         $i = 0;
+        echo '<div class="wrapper">';
         for ($i; $i <= 4; $i++) {
             foreach ($table as $key => $value) {
                 if ($i === $value) {
+                    $j += 1;
                     if ($key == 'PosR') {
-                        echo "<p>";
-                        echo $quizz[$q]['Reponse'];
-                        echo "</p>";
-                        mkRadioCb("radio", $ligne['N_Question'], "Reponse");
+                        //mkRadioCb("radio", $ligne['N_Question'], "Reponse");
+                        echo '<input type="radio" id="option-'; echo $j; echo'" name="';
+                        echo $ligne['N_Question']; echo '" value="Reponse">';
+                        echo '<label for="option-'; echo $j; echo '" class="option option-'; echo $j; echo '">
+                        <div class="dot"></div> <span>';
+                        echo $quizz[$q]['Reponse']; echo'</span> </label>';
+
                     } elseif ($key == 'PosC1') {
-                        echo "<p>";
-                        echo $quizz[$q]['CHOIX1'];
-                        echo "</p>";
-                        mkRadioCb("radio", $ligne['N_Question'], "CHOIX1");
+                        //mkRadioCb("radio", $ligne['N_Question'], "CHOIX1");
+                        echo '<input type="radio" id="option-'; echo $j; echo'" name="';
+                        echo $ligne['N_Question']; echo '" value="Reponse">';
+                        echo '<label for="option-'; echo $j; echo '" class="option option-'; echo $j; echo '">
+                        <div class="dot"></div> <span>';
+                        echo $quizz[$q]['CHOIX1']; echo'</span> </label>';
                     } elseif ($key == 'PosC2') {
-                        echo "<p>";
-                        echo $quizz[$q]['CHOIX2'];
-                        echo "</p>";
-                        mkRadioCb("radio", $ligne['N_Question'], "CHOIX2");
+                        //mkRadioCb("radio", $ligne['N_Question'], "CHOIX2");
+                        echo '<input type="radio" id="option-'; echo $j; echo'" name="';
+                        echo $ligne['N_Question']; echo '" value="Reponse">';
+                        echo '<label for="option-'; echo $j; echo '" class="option option-'; echo $j; echo '">
+                        <div class="dot"></div> <span>';
+                        echo $quizz[$q]['CHOIX2']; echo'</span> </label>';
                     } else {
-                        echo "<p>";
-                        echo $quizz[$q]['CHOIX3'];
-                        echo "</p>";
-                        mkRadioCb("radio", $ligne['N_Question'], "CHOIX3");
+                        //mkRadioCb("radio", $ligne['N_Question'], "CHOIX3");
+                        echo '<input type="radio" id="option-'; echo $j; echo'" name="';
+                        echo $ligne['N_Question']; echo '" value="Reponse">';
+                        echo '<label for="option-'; echo $j; echo '" class="option option-'; echo $j; echo '">
+                        <div class="dot"></div> <span>';
+                        echo $quizz[$q]['CHOIX3']; echo'</span> </label>';
                     }
+                    echo '<style>
+#option-'; echo $j; echo ':checked:checked ~ .option-'; echo $j; echo ' {
+    border-color: #0069d9;
+    background: #0069d9;
+}
+
+#option-'; echo $j; echo':checked:checked ~ .option-'; echo $j; echo' .dot {
+    background: #fff;
+}
+
+#option-'; echo $j; echo':checked:checked ~ .option-'; echo $j; echo' .dot::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#option-'; echo $j; echo':checked:checked ~ .option-'; echo $j; echo' span {
+    color: #fff;
+} </style>';
                 }
             }
 
 
         }
         $q = $q + 1;
+        echo '</div>';
     }
 }
 
