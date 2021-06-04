@@ -523,4 +523,13 @@ function afficherquestionVF($quizz)
     }
 }
 
+
+function PseudoU($ID){
+    $requete = "SELECT Pseudo
+                FROM utilisateurs
+                WHERE ID='$ID'";
+return SQLGetChamp($requete);
+
+}
+
 ?>

@@ -79,6 +79,7 @@ include_once "libs/modele.php";
       if($NomQUizz=valider("NomQUizz"));
       if($Catégorie2=valider("Catégorie2"));
       if($T2Quizz=valider("T2Quizz"));
+      $NomQUizz=htmlspecialchars($NomQUizz);
       if($NomQUizz!=''){
       CréerQuizz($NomQUizz,$Catégorie2,$T2Quizz,$_SESSION["idUser"]);
       $qs = "view=mes_quizz";
@@ -112,12 +113,16 @@ include_once "libs/modele.php";
          if($Question=valider("Question"));
          if($NQues=valider("NQues"));
          $IDQuizz=$_GET['IDQuizz'];
-  
+         $Question=htmlspecialchars($Question);
         if(QuestionexisteQCM($NQues,$IDQuizz,$type)!==0){
           if($Reponse=valider("Reponse"));
            if($CHOIX1=valider("CHOIX1"));
            if($CHOIX2=valider("CHOIX2"));
            if($CHOIX3=valider("CHOIX3"));
+           $Reponse=htmlspecialchars($Reponse);
+           $CHOIX1=htmlspecialchars($CHOIX1);
+           $CHOIX2=htmlspecialchars($CHOIX2);
+           $CHOIX3=htmlspecialchars($CHOIX3);
            modifierquestionQCM($IDQuizz,$NQues,$Question,$Reponse,$CHOIX1,$CHOIX2,$CHOIX3);
            $message='';
         }
@@ -138,12 +143,19 @@ include_once "libs/modele.php";
           if($Question=valider("Question"));
           if($NQues=valider("NQues"));
           $IDQuizz=$_GET['IDQuizz'];
-  
+          $Question=htmlspecialchars($Question);
+
+
+          
            if(QuestionexisteQCM($NQues,$IDQuizz,$type)===false){
             if($Reponse=valider("Reponse"));
              if($CHOIX1=valider("CHOIX1"));
              if($CHOIX2=valider("CHOIX2"));
              if($CHOIX3=valider("CHOIX3"));
+             $Reponse=htmlspecialchars($Reponse);
+             $CHOIX1=htmlspecialchars($CHOIX1);
+             $CHOIX2=htmlspecialchars($CHOIX2);
+             $CHOIX3=htmlspecialchars($CHOIX3);
              ajouterquestionQCM($IDQuizz,$NQues,$Question,$Reponse,$CHOIX1,$CHOIX2,$CHOIX3);
              $message='';
            }
@@ -163,6 +175,7 @@ include_once "libs/modele.php";
             $idUser = $_SESSION['idUser'];
             if(!empty($PseudoQ)){
             changerPseudo($idUser,$PseudoQ);
+            $qs = "view=profil";
             }    
             else{
               $message= "Pseudo invalide";

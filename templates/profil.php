@@ -16,6 +16,12 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php")
 
 <div class="flex">
     <div class="left">
+       <?php
+       echo "<p class='message'>";
+       if($message=valider('message')){
+           echo $message;
+       }
+       echo "</p>";?>
     </div>
     <div class="right">
         <div class="spikes">
@@ -27,10 +33,10 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php")
             ?>
         </div>
         <div class="right-box"><p class="rtitle-p">Mon Profil</p>
+		<p class="label">Bonjour 
         <?php 
-       if($message=valider('message')){
-        echo $message;
-       }
+      echo PseudoU($_SESSION['idUser']);
+	  echo "</p>";
          mkForm('controleur.php', 'GET');
          mkInput('Text','PseudoQ','');
          mkInput("submit","action","Changer de Pseudo");
